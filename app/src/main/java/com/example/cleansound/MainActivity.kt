@@ -1,14 +1,19 @@
 package com.example.cleansound
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.adamratzman.spotify.models.Token
 import com.example.cleansound.databinding.ActivityMainBinding
+import com.example.cleansound.repositories.SpotifyRepository
+import com.example.cleansound.spotify.SpotifyAuthenticator
+import com.example.cleansound.spotify.SpotifyConfig
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,6 +31,8 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
         navView.setupWithNavController(navController)
+
+
 
         /*
         * This line is for the action bar UI, I this action bar will be decided later
