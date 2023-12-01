@@ -1,30 +1,29 @@
 package com.example.cleansound
 
 import android.app.Application
+import com.example.cleansound.local.data.AppDatabase
 import com.example.cleansound.repositories.SpotifyRepository
 import com.example.cleansound.spotify.SpotifyAuthenticator
 import com.example.cleansound.spotify.SpotifyConfig
 import com.example.cleansound.spotify.SpotifyService
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class MainApplication : Application() {
 
-    lateinit var spotifyClient : SpotifyConfig
-    lateinit var spotifyRepository: SpotifyRepository
-    lateinit var spotifyService: SpotifyService
-
-    override fun onCreate() {
-        super.onCreate()
-        val spotifyAuthenticator = SpotifyAuthenticator()
-
-        GlobalScope.launch {
-            spotifyAuthenticator.initializeApi()
-            val tokenAccess = spotifyAuthenticator.getTokenAccess()
-            spotifyClient = SpotifyConfig(applicationContext, tokenAccess)
-            spotifyService = spotifyClient.createService()
-            spotifyRepository = SpotifyRepository(spotifyService)
-        }
+    val spotifyRepository : SpotifyRepository by lazy {
+        initializeSpotifyService()
     }
+
+    private fun initializeSpotifyService() : SpotifyRepository {
+        val spotifyAuthenticator = SpotifyAuthenticator()
+        runBlocking { spotifyAuthenticator.initializeApi() }
+        val tokenAccess = runBlocking { spotifyAuthenticator.getTokenAccess() }
+        val spotifyClient = SpotifyConfig(applicationContext, tokenAccess)
+        val spotifyService = spotifyClient.createService()
+        val appDatabase = AppDatabase.getDatabase(applicationContext)
+
+        return SpotifyRepository(spotifyService, appDatabase)
+
+    }
+
 }

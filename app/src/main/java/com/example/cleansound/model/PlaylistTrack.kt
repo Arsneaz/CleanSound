@@ -7,19 +7,22 @@ data class PlaylistTrack(
 	val items: List<TrackItem?>? = null
 )
 
-data class TrackItem(
-	@SerializedName("track")
-	val track: Track? = null
-)
-
 data class Track(
 	@SerializedName("name")
 	val name: String? = null,
 	@SerializedName("artists")
 	val artists: List<ArtistItem?>? = null,
 	@SerializedName("album")
-	val album: Album? = null
+	val album: Album? = null,
+	@SerializedName("id")
+	val id: String? = null
 )
+
+data class TrackItem(
+	@SerializedName("track")
+	val track: Track? = null
+)
+
 
 data class ArtistItem(
 	@SerializedName("name")
