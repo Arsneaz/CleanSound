@@ -13,6 +13,6 @@ class SpotifyAuthenticator {
     }
 
      fun getTokenAccess(): String {
-        return spotifyApi?.token?.accessToken ?: ""
+        return spotifyApi.token.accessToken ?: ""
     }
 }

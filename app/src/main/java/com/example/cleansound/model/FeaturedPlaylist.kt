@@ -7,20 +7,6 @@ data class FeaturedPlaylist(
 	val playlists: Playlists? = null
 )
 
-data class PlaylistItem(
-
-	@SerializedName("id")
-	val id: String? = null,
-
-	@SerializedName("name")
-	val name: String? = null,
-
-	@SerializedName("images")
-	val images: List<ImagesItem?>? = null,
-
-	@field:SerializedName("tracks")
-	val tracks: Tracks? = null
-)
 data class Playlists(
 
 	@field:SerializedName("next")
@@ -43,6 +29,21 @@ data class Playlists(
 
 	@field:SerializedName("items")
 	val items: List<PlaylistItem?>? = null
+)
+
+data class PlaylistItem(
+
+	@SerializedName("id")
+	val id: String? = null,
+
+	@SerializedName("name")
+	val name: String? = null,
+
+	@SerializedName("images")
+	val images: List<ImagesItem?>? = null,
+
+	@field:SerializedName("tracks")
+	val tracks: Tracks? = null
 )
 
 data class ImagesItem(

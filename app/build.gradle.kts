@@ -77,9 +77,10 @@ dependencies {
     // Wrapper for Spotify API / Api Service
     implementation("com.adamratzman:spotify-api-kotlin-core:4.0.3")
 
-    //  Retrofit and GSON
+    //  Retrofit and GSON / LoggingInterceptor
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
     // Chucker
     debugImplementation("com.github.chuckerteam.chucker:library:4.0.0")
@@ -90,4 +91,20 @@ dependencies {
 
     // Glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    // Paging3
+    implementation("androidx.paging:paging-runtime-ktx:3.2.1")
+
+    // For LiveData support
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+
+    // Room components
+    implementation("androidx.room:room-runtime:2.6.0")
+    kapt("androidx.room:room-compiler:2.6.0")
+    implementation("androidx.room:room-ktx:2.6.0")
+    implementation("androidx.room:room-paging:2.6.0")
+    implementation("androidx.room:room-common:2.6.0")
+
+    implementation("androidx.paging:paging-runtime:3.2.1")
 }
