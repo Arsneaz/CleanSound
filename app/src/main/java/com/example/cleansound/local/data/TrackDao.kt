@@ -7,6 +7,9 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.cleansound.local.model.Track
 
+/**
+ * Interface for setting up the Pagination stuff ayaya
+ **/
 @Dao
 interface TrackDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -15,6 +18,6 @@ interface TrackDao {
     @Query("SELECT * FROM tracks")
     fun getAllTracks(): PagingSource<Int, Track>
 
-    @Query("DELETE FROM tracks")
-    suspend fun clearTracks()
+    @Query("DELETE FROM tracks WHERE trackId NOT IN (SELECT trackId FROM user_favorite_tracks)")
+    suspend fun clearNonFavoriteTracks()
 }

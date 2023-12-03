@@ -36,7 +36,7 @@ class RegisterFragment : Fragment() {
 
         viewModel.currentUser.observe(viewLifecycleOwner) {user ->
             if (user != null) {
-                findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+                findNavController().navigate(R.id.action_registerFragment_to_profileSetupFragment)
             } else {
                 Toast.makeText(requireContext(),"Something wrong with the server when register",Toast.LENGTH_LONG).show()
             }

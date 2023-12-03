@@ -1,4 +1,4 @@
-package com.example.cleansound.model.tracks
+package com.example.cleansound.model.track
 
 import com.google.gson.annotations.SerializedName
 

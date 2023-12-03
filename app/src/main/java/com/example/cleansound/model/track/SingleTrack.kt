@@ -1,13 +1,8 @@
-package com.example.cleansound.model.tracks
+package com.example.cleansound.model.track
 
-import com.example.cleansound.model.track.ExternalIds
-import com.example.cleansound.model.track.LinkedFrom
 import com.google.gson.annotations.SerializedName
 
-data class Track(
-
-	@field:SerializedName("disc_number")
-	val discNumber: Int? = null,
+data class SingleTrack(
 
 	@field:SerializedName("album")
 	val album: Album? = null,

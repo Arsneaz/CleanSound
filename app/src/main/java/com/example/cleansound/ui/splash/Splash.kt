@@ -5,22 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.cleansound.MainApplication
 import com.example.cleansound.R
-import com.example.cleansound.adapter.TracksAdapter
 import com.example.cleansound.databinding.SplashBinding
 import com.example.cleansound.ui.home.HomeViewModel
 import com.example.cleansound.ui.home.SpotifyViewModelFactory
-import com.google.android.play.integrity.internal.t
 
 class Splash: Fragment() {
 
-    private val spotifyViewModel: HomeViewModel by activityViewModels {
+    private val spotifyViewModel: SplashViewModel by viewModels {
         val spotifyRepository = (requireActivity().application as MainApplication).spotifyRepository
-        SpotifyViewModelFactory(spotifyRepository)
+        SplashViewModelFactory(spotifyRepository)
     }
 
     private var _binding: SplashBinding? = null
@@ -45,8 +42,12 @@ class Splash: Fragment() {
             if (isComplete) {
                 displayLoadingIndicator(false)
                 findNavController().navigate(R.id.action_splash_to_loginFragment)
+            } else {
+                displayLoadingIndicator(false)
+                findNavController().navigate(R.id.action_splash_to_loginFragment)
             }
         }
+
     }
 
     private fun displayLoadingIndicator(display: Boolean) {

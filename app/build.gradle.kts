@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("androidx.navigation.safeargs")
     id("kotlin-kapt")
     id("com.google.gms.google-services")
 }
@@ -105,6 +106,5 @@ dependencies {
     implementation("androidx.room:room-ktx:2.6.0")
     implementation("androidx.room:room-paging:2.6.0")
     implementation("androidx.room:room-common:2.6.0")
-
-    implementation("androidx.paging:paging-runtime:3.2.1")
+    implementation("androidx.paging:paging-runtime-ktx:3.2.1")
 }
