@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleansound.MainApplication
 import com.example.cleansound.adapter.TracksAdapter
@@ -17,20 +18,15 @@ import com.example.cleansound.ui.auth.AuthViewModelFactory
 
 class HomeFragment : Fragment() {
 
-    private val viewModel: AuthViewModel by viewModels {
-        AuthViewModelFactory(AuthRepository())
-    }
-
-    private val spotifyViewModel: HomeViewModel by activityViewModels {
+    private val spotifyViewModel: HomeViewModel by viewModels {
         val spotifyRepository = (requireActivity().application as MainApplication).spotifyRepository
         SpotifyViewModelFactory(spotifyRepository)
     }
 
     private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+
+    private lateinit var adapter : TracksAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -64,7 +60,11 @@ class HomeFragment : Fragment() {
 
     private fun setupRecyclerView() {
         binding.trackList.layoutManager = LinearLayoutManager(context)
-        binding.trackList.adapter = TracksAdapter()
+        adapter = TracksAdapter { trackId ->
+            val action = HomeFragmentDirections.actionNavigationHomeToTrackDetailFragment(trackId)
+            findNavController().navigate(action)
+        }
+        binding.trackList.adapter = adapter
     }
 
     override fun onDestroyView() {

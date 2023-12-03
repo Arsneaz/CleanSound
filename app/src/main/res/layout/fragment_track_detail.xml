@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Image -->
+            <ImageView
+                android:id="@+id/trackImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cleansound" />
+
+            <!-- Song Name -->
+            <TextView
+                android:id="@+id/trackTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Song Name"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:paddingTop="16dp"
+                android:paddingBottom="8dp" />
+
+            <!-- Singer -->
+            <TextView
+                android:id="@+id/trackSinger"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Singer"
+                android:textSize="18sp"
+                android:paddingBottom="8dp" />
+
+            <!-- Duration -->
+            <TextView
+                android:id="@+id/trackDuration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Duration: 3:30"
+                android:textSize="16sp"
+                android:paddingBottom="8dp" />
+
+            <!-- Release Date -->
+            <TextView
+                android:id="@+id/trackReleaseDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Release Date: Jan 1, 2023"
+                android:textSize="16sp"
+                android:paddingBottom="16dp" />
+
+            <!-- Other details (e.g., additional information) -->
+            <!-- Add additional TextViews or other UI elements as needed -->
+            <Button
+                android:id="@+id/addIntoFavorite"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="48dp"
+                android:layout_marginEnd="24dp"
+                android:backgroundTint="@color/yellow"
+                android:text="Insert Into Favorites" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

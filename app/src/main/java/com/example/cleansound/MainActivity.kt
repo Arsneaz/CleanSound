@@ -1,10 +1,17 @@
 package com.example.cleansound
 
 import android.os.Bundle
+import android.view.View
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.OnBackPressedDispatcher
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.adamratzman.spotify.models.Token
 import com.example.cleansound.databinding.ActivityMainBinding
@@ -30,22 +37,48 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when(destination.id) {
+                R.id.splash,
+                R.id.loginFragment,
+                R.id.registerFragment,
+                R.id.profileSetupFragment -> {
+                    navView.visibility = View.GONE
+                }
+                else -> navView.visibility = View.VISIBLE
+            }
+
+            val callback = object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    when(navController.currentDestination?.id) {
+                        R.id.navigation_home -> {
+                            showExitConfirmationDialog()
+                        }
+                        R.id.navigation_favorite,
+                        R.id.navigation_notifications,
+                        R.id.navigation_dashboard ->  {
+                            navController.popBackStack(R.id.navigation_home, true)
+                        }
+                        else -> navController.navigateUp()
+                    }
+                }
+            }
+
+            onBackPressedDispatcher.addCallback(this, callback)
+        }
+
         navView.setupWithNavController(navController)
+    }
 
-
-
-        /*
-        * This line is for the action bar UI, I this action bar will be decided later
-        * */
-//        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-//        val appBarConfiguration = AppBarConfiguration(
-//            setOf(
-//                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
-//            )
-//        )
-//        setupActionBarWithNavController(navController, appBarConfiguration)
-
+    private fun showExitConfirmationDialog() {
+        AlertDialog.Builder(this)
+            .setMessage("Do you want to exit the app?")
+            .setPositiveButton("Exit") { dialog, _ ->
+                dialog.dismiss()
+                finish() // Close the app
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
     }
 
     override fun onSupportNavigateUp(): Boolean {

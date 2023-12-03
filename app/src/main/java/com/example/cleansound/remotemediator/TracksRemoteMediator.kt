@@ -10,33 +10,52 @@ import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.example.cleansound.local.data.AppDatabase
 import com.example.cleansound.local.model.Track
+import com.example.cleansound.local.model.UpdateInfo
 import com.example.cleansound.spotify.SpotifyService
 import java.io.IOException
+import java.util.concurrent.TimeUnit
 
 @OptIn(ExperimentalPagingApi::class)
 class TracksRemoteMediator(
     private val spotifyService: SpotifyService,
     private val appDatabase: AppDatabase
 ) : RemoteMediator<Int, Track>(){
+
+    /**
+     * Time-based Refresh to prevent uncontrollable data fetching from the API
+     * I set to 10 minutes interval cuz seems a rational I guess
+     */
+    override suspend fun initialize(): InitializeAction {
+        val cacheTimeout = TimeUnit.MINUTES.toMillis(10)
+        val lastUpdateTime = appDatabase.RefreshStateDao().getLastUpdateTime() ?: 0
+        val currentTime = System.currentTimeMillis()
+
+        return if (lastUpdateTime == 0L || currentTime - lastUpdateTime >= cacheTimeout) {
+            InitializeAction.LAUNCH_INITIAL_REFRESH
+        } else {
+            InitializeAction.SKIP_INITIAL_REFRESH
+        }
+    }
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
     override suspend fun load(loadType: LoadType, state: PagingState<Int, Track>): MediatorResult {
-        println("Trying to fetch the data")
-        try {
-            // Decide when and what to fetch based on loadType
-            val loadKey = when (loadType) {
-                LoadType.REFRESH -> null // Logic for initial load or refresh
-                LoadType.PREPEND -> return MediatorResult.Success(endOfPaginationReached = true) // No prepending in this scenario
-                LoadType.APPEND -> { state.lastItemOrNull() }
-            }
+        var successfulDataFetch = false
 
+        /**
+         * This loadKey is good for paginating also from the spotify API, but later I guess
+         */
+        val loadKey = when (loadType) {
+            LoadType.REFRESH -> null
+            LoadType.PREPEND -> return MediatorResult.Success(endOfPaginationReached = true)
+            LoadType.APPEND -> return MediatorResult.Success(endOfPaginationReached = true)
+        }
+        try {
             // Fetch data from network
-            println("inside the remote mediator")
             val response = spotifyService.getFeaturedPlaylist()
             val playlists = response.body()?.playlists?.items ?: emptyList()
 
             appDatabase.withTransaction {
                 if (loadType == LoadType.REFRESH) {
-                    appDatabase.trackDao().clearTracks() // Clear old tracks on refresh
+                    appDatabase.trackDao().clearNonFavoriteTracks() // Clear old tracks that is non favorite
                 }
 
                 // Iterate over each playlist and fetch its tracks
@@ -47,7 +66,7 @@ class TracksRemoteMediator(
                     //
                     val trackEntities = tracks.map { track ->
                         Track(
-                            id = track.id!!,
+                            trackId = track.id!!,
                             name = track.name!!,
                             artistNames = track.artists?.joinToString(", ") { artist -> artist?.name!!}!!,
                             imageUrl = track.album?.images?.firstOrNull()?.url ?: ""
@@ -55,8 +74,14 @@ class TracksRemoteMediator(
                     }
                     appDatabase.trackDao().insertAll(trackEntities)
                 }
+                successfulDataFetch = true
             }
-            println("finished state")
+
+            if (successfulDataFetch) {
+                val currentTime = System.currentTimeMillis()
+                val updateInfo = UpdateInfo(key = "lastUpdateTime", currentTime)
+                appDatabase.RefreshStateDao().updateLastUpdateTime(updateInfo)
+            }
 
         return MediatorResult.Success(endOfPaginationReached = playlists.isNotEmpty())
         } catch (e: IOException) {

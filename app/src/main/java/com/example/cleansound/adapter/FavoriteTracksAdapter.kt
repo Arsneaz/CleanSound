@@ -2,30 +2,23 @@ package com.example.cleansound.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.cleansound.databinding.TrackItemBinding
 import com.example.cleansound.local.model.Track
 
-class TracksAdapter(private val onTrackClicked: (String) -> Unit) : PagingDataAdapter<Track, TracksAdapter.TrackViewHolder>(DiffCallback) {
+class FavoriteTracksAdapter(private val onTrackClicked: (String) -> Unit) : ListAdapter<Track, FavoriteTracksAdapter.TrackViewHolder>(DiffCallback) {
 
     companion object DiffCallback : DiffUtil.ItemCallback<Track>() {
-        override fun areItemsTheSame(
-            oldItem: Track,
-            newItem: Track
-        ): Boolean {
-            return oldItem == newItem
-        }
-
-        override fun areContentsTheSame(
-            oldItem: Track,
-            newItem: Track
-        ): Boolean {
+        override fun areItemsTheSame(oldItem: Track, newItem: Track): Boolean {
             return oldItem.trackId == newItem.trackId
         }
 
+        override fun areContentsTheSame(oldItem: Track, newItem: Track): Boolean {
+            return oldItem == newItem
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrackViewHolder {
@@ -40,6 +33,7 @@ class TracksAdapter(private val onTrackClicked: (String) -> Unit) : PagingDataAd
             }
             holder.bind(track)
         }
+
     }
 
     class TrackViewHolder(private val binding: TrackItemBinding) : RecyclerView.ViewHolder(binding.root) {

@@ -2,8 +2,9 @@ package com.example.cleansound.model.tracks
 
 import com.google.gson.annotations.SerializedName
 
-data class Restrictions(
+data class Restrictions (
 
-	@field:SerializedName("reason")
-	val reason: String? = null
+    @field:SerializedName("reason")
+    val reason: String? = null
+
 )
