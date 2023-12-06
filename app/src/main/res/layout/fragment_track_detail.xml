@@ -62,15 +62,18 @@
 
             <!-- Other details (e.g., additional information) -->
             <!-- Add additional TextViews or other UI elements as needed -->
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/addIntoFavorite"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="48dp"
-                android:layout_marginEnd="24dp"
-                android:backgroundTint="@color/yellow"
-                android:text="Insert Into Favorites" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_box"
+                android:text="Insert Into Favorites"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:iconTint="@color/transparent" />
 
         </LinearLayout>
 

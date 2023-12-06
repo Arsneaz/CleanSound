@@ -9,4 +9,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FFFF00</color>
+    <color name="whiteBlue">#E5EBF7</color>
+    <color name="blue">#2F88FF</color>
+    <color name="baby_blue">#60A4FF</color>
+    <color name="whiteBlue2">#A8C9F4</color>
+    <color name="transparent">#00FF0000</color>
 </resources>
