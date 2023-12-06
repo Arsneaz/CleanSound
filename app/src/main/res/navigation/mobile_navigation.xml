@@ -14,6 +14,9 @@
             android:id="@+id/action_navigation_home_to_trackDetailFragment"
             app:destination="@id/trackDetailFragment"
             app:popUpTo="@id/navigation_home" />
+        <action
+            android:id="@+id/action_navigation_home_to_featuredTracksFragment"
+            app:destination="@id/featuredTracksFragment" />
     </fragment>
 
     <fragment
@@ -93,6 +96,17 @@
         <action
             android:id="@+id/action_profileSetupFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/featuredTracksFragment"
+        android:name="com.example.cleansound.ui.home.FeaturedTracksFragment"
+        android:label="FeaturedTracksFragment">
+        <argument
+            android:name="playlistId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_featuredTracksFragment_to_trackDetailFragment"
+            app:destination="@id/trackDetailFragment" />
     </fragment>
 
 </navigation>

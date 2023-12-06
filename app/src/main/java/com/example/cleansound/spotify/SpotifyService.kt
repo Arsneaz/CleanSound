@@ -15,7 +15,7 @@ interface SpotifyService {
 
     @GET("playlists/{playlist_id}/tracks")
     suspend fun getPlaylistTracks(
-        @Path("playlist_id") playlistId: String,
+        @Path("playlist_id") playlistId: String?,
     ) : Response<PlaylistTracks>
 
     @GET("search")

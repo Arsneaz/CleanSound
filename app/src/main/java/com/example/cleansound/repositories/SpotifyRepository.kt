@@ -7,19 +7,21 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.cleansound.local.data.AppDatabase
 import com.example.cleansound.model.playlists.FeaturedPlaylists
+import com.example.cleansound.model.playlists.Playlists
 import com.example.cleansound.model.search.ItemsItem
 import com.example.cleansound.model.track.SingleTrack
+import com.example.cleansound.model.tracks.PlaylistTracks
 import com.example.cleansound.remotemediator.TracksRemoteMediator
 import com.example.cleansound.spotify.SpotifyService
 import kotlinx.coroutines.flow.Flow
 
 class SpotifyRepository(private val spotifyService: SpotifyService, private val appDatabase: AppDatabase) {
 
-    suspend fun getFeaturedPlaylists(): Result<FeaturedPlaylists> {
+    suspend fun getFeaturedPlaylists(): Result<Playlists?> {
         return try {
             val response = spotifyService.getFeaturedPlaylist()
             if (response.isSuccessful) {
-                Result.success(response.body() ?: throw Exception("No playlists found"))
+                Result.success(response.body()?.playlists ?: throw Exception("No playlists found"))
             } else {
                 Result.failure(Exception("API Error: ${response.code()}"))
             }
@@ -50,6 +52,19 @@ class SpotifyRepository(private val spotifyService: SpotifyService, private val 
                 Result.failure(Exception("API Error: ${response.code()}"))
             }
         } catch (e : Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun getFeaturedTracks(playlistId: String?) : Result<PlaylistTracks?> {
+        return try {
+            val response = spotifyService.getPlaylistTracks(playlistId)
+            if (response.isSuccessful) {
+                Result.success(response.body())
+            } else {
+                Result.failure(Exception("API Error: ${response.code()}"))
+            }
+        } catch (e :Exception) {
             Result.failure(e)
         }
     }

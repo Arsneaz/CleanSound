@@ -4,19 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleansound.MainApplication
 import com.example.cleansound.adapter.FavoriteTracksAdapter
-import com.example.cleansound.adapter.TracksAdapter
 import com.example.cleansound.databinding.FragmentNotificationsBinding
 import com.example.cleansound.ui.auth.ProfileSetupViewModel
 import com.example.cleansound.ui.auth.ProfileSetupViewModelFactory
-import com.example.cleansound.ui.home.HomeFragmentDirections
 
 class NotificationsFragment : Fragment() {
 

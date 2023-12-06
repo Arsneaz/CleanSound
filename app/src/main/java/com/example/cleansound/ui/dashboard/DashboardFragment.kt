@@ -4,16 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleansound.MainApplication
 import com.example.cleansound.adapter.SearchTracksAdapter
 import com.example.cleansound.databinding.FragmentDashboardBinding
-import com.example.cleansound.ui.details.TrackDetailFragmentArgs
 import com.example.cleansound.ui.home.HomeViewModel
 import com.example.cleansound.ui.home.SpotifyViewModelFactory
 
@@ -51,7 +48,7 @@ class DashboardFragment : Fragment() {
 
     private fun setupRecyclerView() {
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter = SearchTracksAdapter {trackId ->
+        adapter = SearchTracksAdapter { trackId ->
             val action = DashboardFragmentDirections.actionNavigationDashboardToTrackDetailFragment(trackId)
             findNavController().navigate(action)
         }

@@ -5,12 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
-import com.example.cleansound.adapter.TracksAdapter
+import com.example.cleansound.adapter.FeaturedTracksAdapter
 import com.example.cleansound.repositories.SpotifyRepository
 import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.selects.onTimeout
 import kotlinx.coroutines.selects.select
@@ -31,7 +29,7 @@ class SplashViewModel(private val spotifyRepository: SpotifyRepository) : ViewMo
             val fetchDataJob = async {
                 spotifyRepository.getTracksForPlaylist().cachedIn(viewModelScope)
                     .collectLatest { pagingData ->
-                        val tempAdapter = TracksAdapter { _ -> }
+                        val tempAdapter = FeaturedTracksAdapter { _ -> }
                         tempAdapter.submitData(pagingData)
                     }
             }
