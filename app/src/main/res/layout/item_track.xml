@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_16"
         android:layout_marginStart="@dimen/spacing_8"
+        android:textColor="@color/white"
         android:textAppearance="@style/Text.Headings.H2"
         app:layout_constraintStart_toEndOf="@+id/ivTrackImage"
         app:layout_constraintTop_toTopOf="parent"
@@ -37,6 +38,7 @@
         android:layout_marginTop="@dimen/spacing_8"
         android:layout_marginStart="@dimen/spacing_8"
         tools:text="Westlife"
+        android:textColor="@color/white"
         android:textAppearance="@style/Text.Body.Body2"
         app:layout_constraintStart_toEndOf="@+id/ivTrackImage"
         app:layout_constraintTop_toBottomOf="@id/tvTrackTitle" />
@@ -45,6 +47,7 @@
         android:id="@+id/tvTrackReleaseDate"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:textColor="@color/white"
         android:textAppearance="@style/Text.Body.Body2"
         app:layout_constraintBottom_toBottomOf="@id/tvTrackArtist"
         app:layout_constraintEnd_toEndOf="parent"

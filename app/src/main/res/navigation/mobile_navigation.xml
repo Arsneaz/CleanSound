@@ -87,7 +87,11 @@
     <fragment
         android:id="@+id/navigation_favorite"
         android:name="com.example.cleansound.ui.FavoriteFragment"
-        android:label="FavoriteFragment" />
+        android:label="FavoriteFragment" >
+        <action
+            android:id="@+id/action_navigation_favorite_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/profileSetupFragment"

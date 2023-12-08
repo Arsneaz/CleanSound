@@ -1,8 +1,18 @@
 <resources>
     <string name="app_name">CleanSound</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <string name="playlist_image_desc">Playlist of the Playlist</string>
     <string name="track_image_desc">Playlist of the Track</string>
+    <string name="title_dashboard">Search</string>
+    <string name="title_notifications">Favorite</string>
+    <string name="text_register">Register</string>
+    <string name="register_desc">Register an account for\n using our services</string>
+    <string name="splash_title">CleanSound</string>
+    <string name="cleansound_logo_title">Cleansound Logo</string>
+    <string name="login">Login</string>
+    <string name="register_message">Didn\'t have account?</string>
+    <string name="register_link">Register here!</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="redirect_login_messsage">Already Registered ? Sign In</string>
 </resources>

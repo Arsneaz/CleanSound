@@ -11,7 +11,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <!-- Image -->
@@ -27,50 +27,66 @@
                 android:id="@+id/trackTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingBottom="8dp"
                 android:text="Song Name"
                 android:textSize="22sp"
-                android:textStyle="bold"
-                android:paddingTop="16dp"
-                android:paddingBottom="8dp" />
+                android:textStyle="bold" />
 
             <!-- Singer -->
             <TextView
                 android:id="@+id/trackSinger"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
                 android:text="Singer"
-                android:textSize="18sp"
-                android:paddingBottom="8dp" />
+                android:textSize="18sp" />
 
             <!-- Duration -->
             <TextView
                 android:id="@+id/trackDuration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Duration: 3:30"
-                android:textSize="16sp"
-                android:paddingBottom="8dp" />
+                android:paddingBottom="8dp"
+                android:text="3:40"
+                android:textSize="16sp" />
 
             <!-- Release Date -->
             <TextView
                 android:id="@+id/trackReleaseDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
                 android:text="Release Date: Jan 1, 2023"
-                android:textSize="16sp"
-                android:paddingBottom="16dp" />
+                android:textSize="16sp" />
 
             <!-- Other details (e.g., additional information) -->
             <!-- Add additional TextViews or other UI elements as needed -->
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/addIntoFavorite"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="48dp"
-                android:layout_marginEnd="24dp"
-                android:backgroundTint="@color/yellow"
-                android:text="Insert Into Favorites" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_box"
+                android:text="Insert Into Favorites"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:iconTint="@color/transparent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRedirectSpotify"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_box"
+                android:text="Listen to Spotify"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:iconTint="@color/transparent" />
 
         </LinearLayout>
 

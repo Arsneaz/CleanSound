@@ -1,5 +1,6 @@
 package com.example.cleansound.local.model
 
+import android.net.Uri
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -11,6 +12,9 @@ data class User (
     val emailId: String,
 
     @ColumnInfo(name = "name")
-    val name: String
-    // More Personal Information Later
+    val name: String?,
+
+    val desc: String?,
+
+    val imagePath: String?
 )

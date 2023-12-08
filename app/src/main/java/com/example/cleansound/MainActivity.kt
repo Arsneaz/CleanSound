@@ -33,6 +33,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.hide()
+
         val navView: BottomNavigationView = binding.navView
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
@@ -57,6 +59,7 @@ class MainActivity : AppCompatActivity() {
                         R.id.navigation_favorite,
                         R.id.navigation_notifications,
                         R.id.navigation_dashboard ->  {
+                            // This code is also kind not work the way I like
                             navController.popBackStack(R.id.navigation_home, false)
                         }
                         else -> navController.navigateUp()
