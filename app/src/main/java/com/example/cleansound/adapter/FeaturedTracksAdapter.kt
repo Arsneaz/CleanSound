@@ -6,30 +6,24 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.cleansound.databinding.TrackItemBinding
+import com.example.cleansound.databinding.ItemTrackBinding
 import com.example.cleansound.local.model.Track
 
-class TracksAdapter(private val onTrackClicked: (String) -> Unit) : PagingDataAdapter<Track, TracksAdapter.TrackViewHolder>(DiffCallback) {
+class FeaturedTracksAdapter(private val onTrackClicked: (String) -> Unit) : PagingDataAdapter<Track, FeaturedTracksAdapter.TrackViewHolder>(DiffCallback) {
 
     companion object DiffCallback : DiffUtil.ItemCallback<Track>() {
-        override fun areItemsTheSame(
-            oldItem: Track,
-            newItem: Track
-        ): Boolean {
+        override fun areItemsTheSame(oldItem: Track, newItem: Track): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(
-            oldItem: Track,
-            newItem: Track
-        ): Boolean {
+        override fun areContentsTheSame(oldItem: Track,  newItem: Track): Boolean {
             return oldItem.trackId == newItem.trackId
         }
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrackViewHolder {
-        val binding = TrackItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemTrackBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TrackViewHolder(binding)
     }
 
@@ -42,11 +36,11 @@ class TracksAdapter(private val onTrackClicked: (String) -> Unit) : PagingDataAd
         }
     }
 
-    class TrackViewHolder(private val binding: TrackItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class TrackViewHolder(private val binding: ItemTrackBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(track: Track) {
-            binding.trackTitle.text = track.name
-            binding.trackArtist.text = track.artistNames
-            Glide.with(binding.root.context).load(track.imageUrl).into(binding.trackImage)
+            binding.tvTrackTitle.text = track.name
+            binding.tvTrackArtist.text = track.artistNames
+            Glide.with(binding.root.context).load(track.imageUrl).into(binding.ivTrackImage)
         }
     }
 }

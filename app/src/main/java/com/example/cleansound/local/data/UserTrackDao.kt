@@ -23,6 +23,9 @@ interface UserTrackDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFavoriteTrack(crossRef: UserFavoriteTrackReference)
 
+    @Query("SELECT * FROM user WHERE emailId = :emailId")
+    fun getProfile(emailId: String) : LiveData<User>
+
     @Query("SELECT COUNT(*) FROM user_favorite_tracks WHERE emailId = :emailId and trackId = :trackId")
     suspend fun isFavorite(emailId: String, trackId: String) : Int
 
@@ -32,5 +35,4 @@ interface UserTrackDao {
     @Transaction
     @Query("SELECT * FROM tracks INNER JOIN user_favorite_tracks ON tracks.trackId = user_favorite_tracks.trackId WHERE user_favorite_tracks.emailId = :emailId")
     fun getTracks(emailId : String) : LiveData<List<Track>>
-
 }

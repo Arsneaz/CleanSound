@@ -4,7 +4,6 @@ import com.google.gson.annotations.SerializedName
 
 data class ItemsItem(
 
-
 	@field:SerializedName("images")
 	val images: List<ImagesItem?>? = null,
 
@@ -19,6 +18,9 @@ data class ItemsItem(
 
 	@field:SerializedName("href")
 	val href: String? = null,
+
+	@field:SerializedName("type")
+	val type: String? = null,
 
 	@field:SerializedName("id")
 	val id: String? = null

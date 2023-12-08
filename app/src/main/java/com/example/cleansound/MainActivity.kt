@@ -53,13 +53,14 @@ class MainActivity : AppCompatActivity() {
             val callback = object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                     when(navController.currentDestination?.id) {
-                        R.id.navigation_home -> {
+                        R.id.navigation_home, R.id.loginFragment -> {
                             showExitConfirmationDialog()
                         }
                         R.id.navigation_favorite,
                         R.id.navigation_notifications,
                         R.id.navigation_dashboard ->  {
-                            navController.popBackStack(R.id.navigation_home, true)
+                            // This code is also kind not work the way I like
+                            navController.popBackStack(R.id.navigation_home, false)
                         }
                         else -> navController.navigateUp()
                     }

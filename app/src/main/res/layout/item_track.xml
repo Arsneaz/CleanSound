@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/spacing_4"
+    android:background="@drawable/bg_row"
+    android:padding="@dimen/spacing_16">
+
+    <ImageView
+        android:id="@+id/ivTrackImage"
+        android:layout_width="@dimen/card_image_size"
+        android:layout_marginTop="@dimen/spacing_6"
+        android:layout_height="@dimen/card_image_size"
+        android:scaleType="centerCrop"
+        android:background="@drawable/cleansound"
+        android:contentDescription="@string/track_image_desc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTrackTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_16"
+        android:layout_marginStart="@dimen/spacing_8"
+        android:textColor="@color/white"
+        android:textAppearance="@style/Text.Headings.H2"
+        app:layout_constraintStart_toEndOf="@+id/ivTrackImage"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Soledad" />
+
+    <TextView
+        android:id="@+id/tvTrackArtist"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/spacing_8"
+        android:layout_marginStart="@dimen/spacing_8"
+        tools:text="Westlife"
+        android:textColor="@color/white"
+        android:textAppearance="@style/Text.Body.Body2"
+        app:layout_constraintStart_toEndOf="@+id/ivTrackImage"
+        app:layout_constraintTop_toBottomOf="@id/tvTrackTitle" />
+
+    <TextView
+        android:id="@+id/tvTrackReleaseDate"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:textColor="@color/white"
+        android:textAppearance="@style/Text.Body.Body2"
+        app:layout_constraintBottom_toBottomOf="@id/tvTrackArtist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvTrackArtist"
+        tools:text="2015-09-11"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

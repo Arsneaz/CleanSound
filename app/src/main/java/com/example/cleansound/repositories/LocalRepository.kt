@@ -13,6 +13,10 @@ class LocalRepository(private val appDatabase: AppDatabase) {
     private suspend fun insertTrack(track: Track) {
         appDatabase.userTrackDao().insert(track)
     }
+
+    fun getUserProfile(emailId: String) : LiveData<User> {
+        return appDatabase.userTrackDao().getProfile(emailId)
+    }
     suspend fun isFavoriteTrack(emailId: String, trackId: String) : Boolean {
         return appDatabase.userTrackDao().isFavorite(emailId, trackId) > 0
     }

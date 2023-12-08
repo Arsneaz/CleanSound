@@ -5,16 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleansound.MainApplication
-import com.example.cleansound.adapter.TracksAdapter
+import com.example.cleansound.adapter.FeaturedPlaylistsAdapter
+import com.example.cleansound.adapter.FeaturedTracksAdapter
 import com.example.cleansound.databinding.FragmentHomeBinding
-import com.example.cleansound.repositories.AuthRepository
-import com.example.cleansound.ui.auth.AuthViewModel
-import com.example.cleansound.ui.auth.AuthViewModelFactory
 
 class HomeFragment : Fragment() {
 
@@ -26,7 +22,9 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var adapter : TracksAdapter
+    private lateinit var featuredTracksAdapter : FeaturedTracksAdapter
+    private lateinit var featuredPlaylistsAdpter : FeaturedPlaylistsAdapter
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,25 +44,30 @@ class HomeFragment : Fragment() {
         setupRecyclerView()
 
         spotifyViewModel.fetchPlaylist()
-        spotifyViewModel.playlist.observe(viewLifecycleOwner) { response ->
-            println("Total playlist ${response?.playlists?.items?.size}")
-            response?.playlists?.items?.forEach{
-                println("Total playlist ${it?.name}")
-            }
+        spotifyViewModel.playlist.observe(viewLifecycleOwner) { playlist ->
+            (binding.rvFeaturedPlaylist.adapter as FeaturedPlaylistsAdapter).submitList(playlist)
+
         }
 
+
         spotifyViewModel.tracks.observe(viewLifecycleOwner) { pagingData ->
-            (binding.trackList.adapter as TracksAdapter).submitData(lifecycle, pagingData)
+            (binding.rvFeaturedTracks.adapter as FeaturedTracksAdapter).submitData(lifecycle, pagingData)
         }
     }
 
     private fun setupRecyclerView() {
-        binding.trackList.layoutManager = LinearLayoutManager(context)
-        adapter = TracksAdapter { trackId ->
+        featuredTracksAdapter = FeaturedTracksAdapter { trackId ->
             val action = HomeFragmentDirections.actionNavigationHomeToTrackDetailFragment(trackId)
             findNavController().navigate(action)
         }
-        binding.trackList.adapter = adapter
+        binding.rvFeaturedTracks.adapter = featuredTracksAdapter
+
+        featuredPlaylistsAdpter = FeaturedPlaylistsAdapter { playlistId ->
+            val action = HomeFragmentDirections.actionNavigationHomeToFeaturedTracksFragment(playlistId)
+            findNavController().navigate(action)
+        }
+        binding.rvFeaturedPlaylist.adapter = featuredPlaylistsAdpter
+
     }
 
     override fun onDestroyView() {

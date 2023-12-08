@@ -13,6 +13,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="105dp"
         android:src="@drawable/logo"
+        android:contentDescription="@string/cleansound_logo_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +36,7 @@
         android:layout_marginStart="105dp"
         android:layout_marginTop="350dp"
         android:layout_marginEnd="105dp"
-        android:text="Register an account for\n using our services"
+        android:text="@string/register_desc"
         android:textAlignment="center"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="435dp"
-        android:hint="Email"
+        android:hint="@string/email"
         android:paddingHorizontal="32dp"
         app:boxCornerRadiusBottomEnd="20dp"
         app:boxCornerRadiusBottomStart="20dp"
@@ -58,7 +59,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/emailEditSignUp"
+            android:id="@+id/tiEmailEditSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/ic_email"
@@ -69,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="500dp"
-        android:hint="Password"
+        android:hint="@string/password"
         android:paddingHorizontal="32dp"
         app:boxCornerRadiusBottomEnd="20dp"
         app:boxCornerRadiusBottomStart="20dp"
@@ -81,7 +82,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passEditSignUp"
+            android:id="@+id/tiPassEditSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/emailEditSignUp"
@@ -102,14 +103,14 @@
         android:textAllCaps="false"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/passEditSignUp"
+        app:layout_constraintTop_toBottomOf="@+id/tiPassEditSignUp"
         tools:ignore="NotSibling" />
     <TextView
         android:id="@+id/signInText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Already Registered ? Sign In"
+        android:text="@string/redirect_login_messsage"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

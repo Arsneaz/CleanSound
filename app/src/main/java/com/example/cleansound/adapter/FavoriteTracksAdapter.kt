@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.cleansound.databinding.TrackItemBinding
+import com.example.cleansound.databinding.ItemTrackBinding
 import com.example.cleansound.local.model.Track
 
 class FavoriteTracksAdapter(private val onTrackClicked: (String) -> Unit) : ListAdapter<Track, FavoriteTracksAdapter.TrackViewHolder>(DiffCallback) {
@@ -22,7 +22,7 @@ class FavoriteTracksAdapter(private val onTrackClicked: (String) -> Unit) : List
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrackViewHolder {
-        val binding = TrackItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemTrackBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TrackViewHolder(binding)
     }
 
@@ -36,11 +36,11 @@ class FavoriteTracksAdapter(private val onTrackClicked: (String) -> Unit) : List
 
     }
 
-    class TrackViewHolder(private val binding: TrackItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class TrackViewHolder(private val binding: ItemTrackBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(track: Track) {
-            binding.trackTitle.text = track.name
-            binding.trackArtist.text = track.artistNames
-            Glide.with(binding.root.context).load(track.imageUrl).into(binding.trackImage)
+            binding.tvTrackTitle.text = track.name
+            binding.tvTrackArtist.text = track.artistNames
+            Glide.with(binding.root.context).load(track.imageUrl).into(binding.ivTrackImage)
         }
     }
 }

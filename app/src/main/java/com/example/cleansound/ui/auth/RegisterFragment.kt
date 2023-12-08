@@ -38,7 +38,7 @@ class RegisterFragment : Fragment() {
             if (user != null) {
                 findNavController().navigate(R.id.action_registerFragment_to_profileSetupFragment)
             } else {
-                Toast.makeText(requireContext(),"Something wrong with the server when register",Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(),"User with same email already exists, please change another email",Toast.LENGTH_LONG).show()
             }
         }
 
@@ -49,13 +49,12 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.signUpBtn.setOnClickListener{
-            val email = binding.emailEditSignUp.text.toString()
-            val password = binding.passEditSignUp.text.toString()
+            val email = binding.tiEmailEditSignUp.text.toString()
+            val password = binding.tiPassEditSignUp.text.toString()
 
             if (!email.isEmpty() && !password.isEmpty()) {
                 viewModel.register(email, password)
             }
-            Toast.makeText(requireContext(), "Register Success", Toast.LENGTH_SHORT).show()
         }
 
         binding.signInText.setOnClickListener{

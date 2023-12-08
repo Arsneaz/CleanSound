@@ -11,7 +11,7 @@ import com.example.cleansound.local.model.UserFavoriteTrackReference
 
 @Database(
     entities = [Track::class, User::class, UserFavoriteTrackReference::class, UpdateInfo::class],
-    version = 7,
+    version = 9,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase(){

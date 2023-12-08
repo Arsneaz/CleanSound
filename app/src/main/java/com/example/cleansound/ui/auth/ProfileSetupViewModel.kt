@@ -1,10 +1,12 @@
 package com.example.cleansound.ui.auth
 
+import android.content.Context
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
+import com.example.cleansound.R
 import com.example.cleansound.local.model.Track
 import com.example.cleansound.local.model.User
 import com.example.cleansound.repositories.LocalRepository
@@ -15,6 +17,9 @@ class ProfileSetupViewModel(private val localRepository: LocalRepository) : View
 
     private val userEmail = FirebaseAuth.getInstance().currentUser?.email!!
 
+    private val _imageUri = MutableLiveData<Uri?>()
+    val imageUri : LiveData<Uri?> get() = _imageUri
+
     private val _insertUserStatus = MutableLiveData<Boolean>()
     val insertUserStatus : LiveData<Boolean> get() = _insertUserStatus
 
@@ -24,8 +29,13 @@ class ProfileSetupViewModel(private val localRepository: LocalRepository) : View
     private val _favoriteTracks = localRepository.getFavoriteTracks(userEmail)
     val favoriteTracks : LiveData<List<Track>> = _favoriteTracks
 
-    fun addNewUser(userName: String) {
-        val newUser = User(userEmail, userName)
+    private val _userProfile = localRepository.getUserProfile(userEmail)
+    val userProfile : LiveData<User> = _userProfile
+    fun saveImageUri(uri: Uri?) {
+        _imageUri.value = uri
+    }
+    fun addNewUser(userName: String, userDesc : String , imageUri : Uri) {
+        val newUser = User(userEmail, userName, userDesc, imageUri.toString())
         viewModelScope.launch {
             try {
                 localRepository.insertUser(newUser)
@@ -59,9 +69,4 @@ class ProfileSetupViewModel(private val localRepository: LocalRepository) : View
         }
     }
 
-    fun getFavoriteTracks() {
-        viewModelScope.launch {
-
-        }
-    }
 }

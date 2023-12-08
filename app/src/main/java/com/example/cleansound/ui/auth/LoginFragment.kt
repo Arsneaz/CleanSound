@@ -39,7 +39,7 @@ class LoginFragment : Fragment() {
             if (user != null) {
                 findNavController().navigate(R.id.action_loginFragment_to_navigation_home)
             } else {
-                Toast.makeText(requireContext(),"Something wrong with the server when Login",Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(),"Invalid Login Please Try Again",Toast.LENGTH_LONG).show()
             }
         }
 
@@ -50,18 +50,17 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Redirecting to the register page
-        binding.signInBtn.setOnClickListener {
-            val email = binding.emailEditSignUp.text.toString()
-            val password = binding.passEditSignUp.text.toString()
+        binding.btnSignInBtn.setOnClickListener {
+            val email = binding.tiEmailEditSignUp.text.toString()
+            val password = binding.tiPassEditSignUp.text.toString()
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 viewModel.login(email, password)
             }
-            Toast.makeText(requireContext(), "Login Success", Toast.LENGTH_SHORT).show()
 
         }
 
-        binding.signUpText.setOnClickListener {
+        binding.tvSignUpText.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
     }
