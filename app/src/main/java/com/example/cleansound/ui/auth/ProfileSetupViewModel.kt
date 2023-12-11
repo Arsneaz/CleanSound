@@ -1,21 +1,19 @@
 package com.example.cleansound.ui.auth
 
-import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.cleansound.R
 import com.example.cleansound.local.model.Track
 import com.example.cleansound.local.model.User
 import com.example.cleansound.repositories.LocalRepository
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
-class ProfileSetupViewModel(private val localRepository: LocalRepository) : ViewModel() {
+class ProfileSetupViewModel(private val localRepository: LocalRepository,private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()) : ViewModel() {
 
-    private val userEmail = FirebaseAuth.getInstance().currentUser?.email!!
+    val userEmail = firebaseAuth.currentUser?.email!!
 
     private val _imageUri = MutableLiveData<Uri?>()
     val imageUri : LiveData<Uri?> get() = _imageUri
@@ -34,8 +32,8 @@ class ProfileSetupViewModel(private val localRepository: LocalRepository) : View
     fun saveImageUri(uri: Uri?) {
         _imageUri.value = uri
     }
-    fun addNewUser(userName: String, userDesc : String , imageUri : Uri) {
-        val newUser = User(userEmail, userName, userDesc, imageUri.toString())
+    fun addNewUser(usernameEmail: String = userEmail, usernameName: String, usernameDesc: String, imageUri: String) {
+        val newUser = User(usernameEmail, usernameName, usernameDesc, imageUri)
         viewModelScope.launch {
             try {
                 localRepository.insertUser(newUser)

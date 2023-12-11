@@ -24,6 +24,7 @@ import com.bumptech.glide.Glide
 import com.example.cleansound.MainApplication
 import com.example.cleansound.R
 import com.example.cleansound.databinding.FragmentProfileSetupBinding
+import com.google.firebase.auth.FirebaseAuth
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -91,13 +92,14 @@ class ProfileSetupFragment : Fragment() {
         binding.proceedBtn.setOnClickListener{
             val userName = binding.userNameProfile.text.toString()
             var userDesc = binding.userDescProfile.text.toString()
+            val userEmail = FirebaseAuth.getInstance().currentUser?.email!!
             userDesc = userDesc.takeIf { it.isNotEmpty() } ?: "This person has not have any description"
             val userImageUri = imageUri ?: getDefaultImageUri(requireContext(), R.drawable.ic_user)
 
             if (userName.isEmpty()) {
                 Toast.makeText(requireContext(),"Please fill the username.",Toast.LENGTH_LONG).show()
             } else {
-                profileSetupViewModel.addNewUser(userName, userDesc, userImageUri)
+                profileSetupViewModel.addNewUser(userEmail, userName, userDesc, userImageUri.toString())
             }
         }
 

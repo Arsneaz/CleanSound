@@ -35,6 +35,12 @@ class LoginFragment : Fragment() {
         _binding = FragmentLoginBinding.inflate(inflater)
         val root = binding.root
 
+        return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         viewModel.currentUser.observe(viewLifecycleOwner) {user ->
             if (user != null) {
                 findNavController().navigate(R.id.action_loginFragment_to_navigation_home)
@@ -42,12 +48,6 @@ class LoginFragment : Fragment() {
                 Toast.makeText(requireContext(),"Invalid Login Please Try Again",Toast.LENGTH_LONG).show()
             }
         }
-
-        return root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         // Redirecting to the register page
         binding.btnSignInBtn.setOnClickListener {

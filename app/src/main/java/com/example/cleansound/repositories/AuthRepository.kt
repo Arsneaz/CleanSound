@@ -2,31 +2,33 @@ package com.example.cleansound.repositories
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
-class AuthRepository {
-    private val firebaseAuth = FirebaseAuth.getInstance()
+class AuthRepository(private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()) {
 
-    fun register(email: String, password: String, callback: (FirebaseUser?, String?) -> Unit) {
+    suspend fun register(email: String, password: String): Result<FirebaseUser> = suspendCoroutine { continuation ->
         firebaseAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    callback(firebaseAuth.currentUser, null)
+                    continuation.resume(Result.success(firebaseAuth.currentUser!!))
                 } else {
-                    callback(null, task.exception?.message)
+                    continuation.resume(Result.failure(task.exception ?: Exception("Registration failed")))
                 }
             }
     }
 
-    fun login(email: String, password: String, callback: (FirebaseUser?, String?) -> Unit) {
+    suspend fun login(email: String, password: String): Result<FirebaseUser> = suspendCoroutine { continuation ->
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    callback(firebaseAuth.currentUser, null)
+                    continuation.resume(Result.success(firebaseAuth.currentUser!!))
                 } else {
-                    callback(null, task.exception?.message)
+                    continuation.resume(Result.failure(task.exception ?: Exception("Login failed")))
                 }
             }
     }
+
 
     fun signOut(){
         firebaseAuth.signOut()

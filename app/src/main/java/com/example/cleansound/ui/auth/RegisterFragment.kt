@@ -32,7 +32,12 @@ class RegisterFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         _binding = FragmentRegisterBinding.inflate(inflater)
-        val root = binding.root
+        return binding.root
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         viewModel.currentUser.observe(viewLifecycleOwner) {user ->
             if (user != null) {
@@ -41,12 +46,6 @@ class RegisterFragment : Fragment() {
                 Toast.makeText(requireContext(),"User with same email already exists, please change another email",Toast.LENGTH_LONG).show()
             }
         }
-
-        return root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         binding.signUpBtn.setOnClickListener{
             val email = binding.tiEmailEditSignUp.text.toString()
