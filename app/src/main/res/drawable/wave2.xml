@@ -1,0 +1,20 @@
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <item>
+    <shape>
+      <solid android:color="@color/whiteBlue2"/>
+      <corners android:radius="30dp"/>
+    </shape>
+  </item>
+  <item>
+    <vector
+        android:width="354dp"
+        android:height="155dp"
+        android:viewportWidth="354"
+        android:viewportHeight="155">
+      <path
+          android:pathData="M0,20C0,8.95 8.95,0 20,0H334C345.05,0 354,8.95 354,20V133.38C354,151.81 330.27,161.25 316.62,148.87C291.38,125.99 257.9,100.43 231,96.8C191.68,91.49 168.2,139.71 129,130.68C98.35,123.62 85.33,64.57 55,77.44C53.81,77.94 52.61,78.58 51.4,79.34C33.16,90.72 0,84.17 0,62.67V20Z"
+          android:fillColor="#2F88FF"/>
+    </vector>
+  </item>
+</layer-list>

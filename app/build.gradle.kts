@@ -99,6 +99,10 @@ dependencies {
 
     // Glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    kapt("com.github.bumptech.glide:compiler:4.12.0")
+
+    //ColorAPI
+    implementation("androidx.palette:palette:1.0.0")
 
     // Paging3
     implementation("androidx.paging:paging-runtime-ktx:3.2.1")

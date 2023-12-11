@@ -6,28 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:paddingTop="@dimen/text_size_32"
-        android:id="@+id/rvFeaturedPlaylist"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/tv_title_playlist"
+        android:layout_width="270dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingHorizontal="@dimen/spacing_6"
+        android:text="@string/title_playlist"
+        android:textAppearance="@style/Text.Headings.H1"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFeaturedPlaylist"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:padding="@dimen/spacing_16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_playlist"
         tools:listitem="@layout/item_playlist" />
+
+    <TextView
+        android:id="@+id/tv_title_music"
+        android:layout_width="245dp"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/spacing_6"
+        android:text="@string/title_music"
+        android:textAppearance="@style/Text.Headings.H1"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rvFeaturedPlaylist" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFeaturedTracks"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="@dimen/spacing_16"
+        android:paddingHorizontal="@dimen/spacing_6"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rvFeaturedPlaylist"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_music"
         tools:listitem="@layout/item_track" />
 </androidx.constraintlayout.widget.ConstraintLayout>

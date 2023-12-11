@@ -19,17 +19,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <ImageView
-        android:id="@+id/ivProfilePicture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_img"
+        android:layout_width="@dimen/image_profle_size"
+        android:layout_height="@dimen/image_profle_size"
+        android:layout_marginStart="140dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="140dp"
-        android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signInText"
-        tools:src="@tools:sample/avatars" />
+        app:cardCornerRadius="100dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            >
+            <ImageView
+                android:layout_width="@dimen/card_image_size"
+                android:layout_height="@dimen/card_image_size"
+                android:src="@drawable/img_profile_setup"
+                />
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/ivProfilePicture"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:src="@tools:sample/avatars" />
+    </com.google.android.material.card.MaterialCardView>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
@@ -46,8 +65,8 @@
         app:boxStrokeColor="@color/blue"
         app:hintTextColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ivProfilePicture"
-        app:layout_constraintTop_toBottomOf="@+id/ivProfilePicture">
+        app:layout_constraintStart_toEndOf="@+id/cv_img"
+        app:layout_constraintTop_toBottomOf="@+id/cv_img">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/userNameProfile"
@@ -63,7 +82,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="20dp"
         android:hint="Description of yourself"
         android:paddingHorizontal="32dp"
         app:boxCornerRadiusBottomEnd="20dp"
