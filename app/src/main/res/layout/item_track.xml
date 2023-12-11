@@ -4,54 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/spacing_4"
+    android:layout_marginHorizontal="@dimen/spacing_4"
+    android:layout_marginVertical="@dimen/spacing_2"
     android:background="@drawable/bg_row"
     android:padding="@dimen/spacing_16">
 
-    <ImageView
-        android:id="@+id/ivTrackImage"
-        android:layout_width="@dimen/card_image_size"
-        android:layout_marginTop="@dimen/spacing_6"
-        android:layout_height="@dimen/card_image_size"
-        android:scaleType="centerCrop"
-        android:background="@drawable/cleansound"
-        android:contentDescription="@string/track_image_desc"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvTrackTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_16"
-        android:layout_marginStart="@dimen/spacing_8"
-        android:textColor="@color/white"
-        android:textAppearance="@style/Text.Headings.H2"
-        app:layout_constraintStart_toEndOf="@+id/ivTrackImage"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Soledad" />
-
-    <TextView
-        android:id="@+id/tvTrackArtist"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/spacing_8"
-        android:layout_marginStart="@dimen/spacing_8"
-        tools:text="Westlife"
-        android:textColor="@color/white"
-        android:textAppearance="@style/Text.Body.Body2"
-        app:layout_constraintStart_toEndOf="@+id/ivTrackImage"
-        app:layout_constraintTop_toBottomOf="@id/tvTrackTitle" />
-
-    <TextView
-        android:id="@+id/tvTrackReleaseDate"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:textColor="@color/white"
-        android:textAppearance="@style/Text.Body.Body2"
-        app:layout_constraintBottom_toBottomOf="@id/tvTrackArtist"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvTrackArtist"
-        tools:text="2015-09-11"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivTrackImage"
+            android:layout_width="@dimen/card_image_size"
+            android:layout_height="@dimen/card_image_size"
+            android:background="@drawable/cleansound"
+            android:contentDescription="@string/track_image_desc"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minWidth="400dp"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/spacing_6"
+            >
+
+            <TextView
+                android:id="@+id/tvTrackTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:textAppearance="@style/Text.Headings.H1"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                tools:text="Soledad" />
+
+            <TextView
+                android:id="@+id/tvTrackArtist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:includeFontPadding="false"
+                android:textAppearance="@style/Text.Body.Body2"
+                android:textColor="@color/white"
+                tools:text="Westlife" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvTrackReleaseDate"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textAppearance="@style/Text.Body.Body2"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/tvTrackArtist"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@id/tvTrackArtist"-->
+<!--        tools:text="2015-09-11"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

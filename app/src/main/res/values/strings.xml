@@ -15,4 +15,6 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="redirect_login_messsage">Already Registered ? Sign In</string>
+    <string name="title_playlist">PlayList Populer</string>
+    <string name="title_music">Music Populer</string>
 </resources>

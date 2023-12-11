@@ -6,8 +6,10 @@
             <solid android:color="@color/baby_blue"/>
         </shape>
     </item>
+
     <item>
         <shape android:shape="rectangle">
+            <stroke android:width="2dp" android:color="@color/white"/>
             <corners android:radius="20dp"/>
             <solid android:color="@color/blue"/>
         </shape>

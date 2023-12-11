@@ -9,7 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleansound.MainApplication
+import com.example.cleansound.R
 import com.example.cleansound.adapter.SearchTracksAdapter
+import com.example.cleansound.adapter.VerticalSpaceItemDecoration
 import com.example.cleansound.databinding.FragmentDashboardBinding
 import com.example.cleansound.ui.home.HomeViewModel
 import com.example.cleansound.ui.home.SpotifyViewModelFactory
@@ -52,6 +54,8 @@ class DashboardFragment : Fragment() {
             val action = DashboardFragmentDirections.actionNavigationDashboardToTrackDetailFragment(trackId)
             findNavController().navigate(action)
         }
+        val vertical = resources.getDimensionPixelSize(R.dimen.spacing_4)
+        binding.recyclerView.addItemDecoration(VerticalSpaceItemDecoration(vertical))
         binding.recyclerView.adapter = adapter
 
     }

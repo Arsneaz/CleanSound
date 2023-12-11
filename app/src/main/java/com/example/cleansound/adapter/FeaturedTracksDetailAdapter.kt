@@ -1,12 +1,12 @@
 package com.example.cleansound.adapter
 
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.cleansound.databinding.ItemPlaylistBinding
 import com.example.cleansound.databinding.ItemTrackBinding
 import com.example.cleansound.model.tracks.Track
 
@@ -41,6 +41,8 @@ class FeaturedTracksDetailAdapter (private val onPlaylistClicked: (String) -> Un
         val binding = ItemTrackBinding.inflate(LayoutInflater.from(parent.context))
         return FeaturedTracksDetailViewHolder(binding)
     }
+
+
 
     override fun onBindViewHolder(
         holder: FeaturedTracksDetailViewHolder,

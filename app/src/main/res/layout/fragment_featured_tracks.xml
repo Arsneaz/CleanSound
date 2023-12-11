@@ -4,15 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    android:orientation="vertical"
+    android:paddingVertical="@dimen/spacing_6"
+    tools:context=".ui.home.FeaturedTracksFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTracksPlaylist"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        tools:layout_editor_absoluteX="0dp"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/spacing_6"
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_track"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_track" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

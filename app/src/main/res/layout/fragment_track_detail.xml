@@ -1,95 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bg_detail"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/whiteBlue2"
     android:padding="16dp">
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/radius_20"
+        android:elevation="10dp"
+        app:cardBackgroundColor="@color/white"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
             <!-- Image -->
             <ImageView
                 android:id="@+id/trackImage"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="250dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/cleansound" />
 
-            <!-- Song Name -->
-            <TextView
-                android:id="@+id/trackTitle"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="16dp"
-                android:paddingBottom="8dp"
-                android:text="Song Name"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_20">
+                <!-- Song Name -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Title"
+                    android:textSize="@dimen/text_size_16"
+                    />
+                <TextView
+                    android:id="@+id/trackTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Song Name"
+                    android:textSize="@dimen/text_size_20"
+                    android:textStyle="bold" />
+                <!-- Singer -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Artist"
+                    android:textSize="@dimen/text_size_16"
+                    />
+                <TextView
+                    android:id="@+id/trackSinger"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:textStyle="bold"
+                    android:text="Singer"
+                    android:textSize="@dimen/text_size_20" />
 
-            <!-- Singer -->
-            <TextView
-                android:id="@+id/trackSinger"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
-                android:text="Singer"
-                android:textSize="18sp" />
+                <!-- Duration -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Duration"
+                    android:textSize="@dimen/text_size_16"
+                    />
+                <TextView
+                    android:id="@+id/trackDuration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:textStyle="bold"
+                    android:text="3:40"
+                    android:textSize="@dimen/text_size_20" />
 
-            <!-- Duration -->
-            <TextView
-                android:id="@+id/trackDuration"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
-                android:text="3:40"
-                android:textSize="16sp" />
+                <!-- Release Date -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Release Date: "
+                    android:textSize="@dimen/text_size_16" />
 
-            <!-- Release Date -->
-            <TextView
-                android:id="@+id/trackReleaseDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="16dp"
-                android:text="Release Date: Jan 1, 2023"
-                android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/trackReleaseDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:textStyle="bold"
+                    android:text="Jan 1, 2023"
+                    android:textSize="@dimen/text_size_20" />
 
-            <!-- Other details (e.g., additional information) -->
-            <!-- Add additional TextViews or other UI elements as needed -->
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/addIntoFavorite"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="32dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/btn_box"
-                android:text="Insert Into Favorites"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                app:iconTint="@color/transparent" />
+                <!-- Other details (e.g., additional information) -->
+                <!-- Add additional TextViews or other UI elements as needed -->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/addIntoFavorite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btn_box"
+                    android:elevation="@dimen/cardview_default_elevation"
+                    android:text="Insert Into Favorites"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:iconTint="@color/transparent" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnRedirectSpotify"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="32dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/btn_box"
-                android:text="Listen to Spotify"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                app:iconTint="@color/transparent" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnRedirectSpotify"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="32dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/btn_box"
+                    android:elevation="@dimen/cardview_default_elevation"
+                    android:text="Listen to Spotify"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:iconTint="@color/transparent" />
+            </LinearLayout>
 
         </LinearLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

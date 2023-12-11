@@ -49,7 +49,6 @@ class HomeFragment : Fragment() {
 
         }
 
-
         spotifyViewModel.tracks.observe(viewLifecycleOwner) { pagingData ->
             (binding.rvFeaturedTracks.adapter as FeaturedTracksAdapter).submitData(lifecycle, pagingData)
         }
