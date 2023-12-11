@@ -1,5 +1,7 @@
 package com.example.cleansound.ui.home
 
+import android.graphics.Rect
+import android.icu.lang.UCharacter.VerticalOrientation
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +11,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.cleansound.MainApplication
+import com.example.cleansound.R
 import com.example.cleansound.adapter.FeaturedTracksDetailAdapter
+import com.example.cleansound.adapter.VerticalSpaceItemDecoration
 import com.example.cleansound.databinding.FragmentFeaturedTracksBinding
 
 class FeaturedTracksFragment : Fragment() {
@@ -46,14 +51,16 @@ class FeaturedTracksFragment : Fragment() {
             (binding.rvTracksPlaylist.adapter as FeaturedTracksDetailAdapter).submitList(tracks)
         }
 
-
     }
+
 
     private fun setupRecyclerView() {
         featuredTracksDetailAdapter = FeaturedTracksDetailAdapter {trackId ->
             val action = FeaturedTracksFragmentDirections.actionFeaturedTracksFragmentToTrackDetailFragment(trackId)
             findNavController().navigate(action)
         }
+        val vertical = resources.getDimensionPixelSize(R.dimen.spacing_4)
+        binding.rvTracksPlaylist.addItemDecoration(VerticalSpaceItemDecoration(vertical))
         binding.rvTracksPlaylist.adapter = featuredTracksDetailAdapter
     }
 

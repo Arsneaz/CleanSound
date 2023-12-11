@@ -3,6 +3,9 @@ package com.example.cleansound.ui.details
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +15,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import androidx.palette.graphics.Palette
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import com.example.cleansound.MainApplication
 import com.example.cleansound.databinding.FragmentTrackDetailBinding
 import com.example.cleansound.local.model.Track
@@ -68,7 +74,32 @@ class TrackDetailFragment : Fragment() {
                 binding.trackDuration.text = durationMs?.let { String.format("%d:%02d", it / 1000 / 60, it / 1000 % 60) }
 
                 binding.trackReleaseDate.text = track.album?.releaseDate
-                Glide.with(binding.root.context).load(track.album?.images?.firstOrNull()?.url).into(binding.trackImage)
+                Glide.with(binding.root.context)
+                    .asBitmap()
+                    .load(track.album?.images?.firstOrNull()?.url)
+                    .into(object : CustomTarget<Bitmap>(){
+                        override fun onResourceReady(
+                            resource: Bitmap,
+                            transition: Transition<in Bitmap>?
+                        ) {
+                            val palette = Palette.from(resource).generate()
+                            val topColor = palette.getDominantColor(0)
+                            val middleColor = palette.getDarkMutedColor(0)
+                            val bottomColor = palette.getDarkVibrantColor(0)
+
+                            val gradientDrawable = GradientDrawable(
+                                GradientDrawable.Orientation.TOP_BOTTOM,
+                                intArrayOf(topColor,middleColor,bottomColor)
+                            )
+                            binding.bgDetail.background = gradientDrawable
+
+                            Glide.with(binding.root.context).load(track.album?.images?.firstOrNull()?.url).into(binding.trackImage)
+                        }
+
+                        override fun onLoadCleared(placeholder: Drawable?) {
+                            TODO("Not yet implemented")
+                        }
+                    })
 
                 // Move these inside the observe block
                 favoriteViewModel.checkIfFavorite(trackEntities)

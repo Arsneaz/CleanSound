@@ -1,11 +1,18 @@
 package com.example.cleansound.adapter
 
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import com.example.cleansound.databinding.ItemPlaylistBinding
 import com.example.cleansound.model.playlists.ItemsItem
 
@@ -23,10 +30,37 @@ class FeaturedPlaylistsAdapter(private val onPlaylistClicked: (String) -> Unit) 
 
     class FeaturedPlaylistsViewHolder(private val binding: ItemPlaylistBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(itemsItem: ItemsItem) {
-            binding.tvPlaylistName.text = itemsItem.name
-            binding.tvPlaylistType.text = itemsItem.type
+
             itemsItem.images?.firstOrNull()?.url.let {imgUrl ->
-                Glide.with(binding.root.context).load(imgUrl).into(binding.ivPlaylistImage)
+                Glide.with(binding.root.context)
+                    .asBitmap()
+                    .load(imgUrl)
+                    .into(object : CustomTarget<Bitmap>(){
+                        override fun onResourceReady(
+                            resource: Bitmap,
+                            transition: Transition<in Bitmap>?
+                        ) {
+                            val palette = Palette.from(resource).generate()
+
+                            val topColor = palette.getDominantColor(0)
+                            val middleColor = palette.getDarkMutedColor(0)
+                            val bottomColor = palette.getDarkVibrantColor(0)
+
+                            val gradientDrawable = GradientDrawable(
+                                GradientDrawable.Orientation.TOP_BOTTOM,
+                                intArrayOf(topColor,middleColor,bottomColor)
+                            )
+                            gradientDrawable.cornerRadius = 20f
+
+                            binding.bxImg.background = gradientDrawable
+
+                            Glide.with(binding.root.context).load(imgUrl).into(binding.ivPlaylistImage)
+                        }
+
+                        override fun onLoadCleared(placeholder: Drawable?) {
+                            TODO("Not yet implemented")
+                        }
+                    })
             }
 
         }
