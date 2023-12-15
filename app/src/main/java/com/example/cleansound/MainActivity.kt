@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when(destination.id) {
                 R.id.splash,
+                R.id.motionLayout2,
                 R.id.loginFragment,
                 R.id.registerFragment,
                 R.id.profileSetupFragment -> {

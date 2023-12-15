@@ -6,6 +6,8 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
+import android.media.AudioAttributes
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -105,6 +107,23 @@ class TrackDetailFragment : Fragment() {
                 favoriteViewModel.checkIfFavorite(trackEntities)
                 binding.addIntoFavorite.setOnClickListener {
                     favoriteViewModel.toggleFavoriteStatus(trackEntities)
+//                    if(track.previewUrl !== null){
+//                        MediaPlayer().apply {
+//                            setAudioAttributes(
+//                                AudioAttributes.Builder()
+//                                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+//                                    .setUsage(AudioAttributes.USAGE_MEDIA)
+//                                    .build()
+//                            )
+//                            setDataSource(track.previewUrl)
+//                            prepareAsync()
+//                            setOnPreparedListener {
+//                                start()
+//                            }
+//                        }
+//                    } else {
+//                        Toast.makeText(requireContext(), "Music Tidak Tersedia", Toast.LENGTH_SHORT).show()
+//                    }
                 }
             }
         }
