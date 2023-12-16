@@ -13,6 +13,7 @@ import com.example.cleansound.model.playlists.Playlists
 import com.example.cleansound.model.search.ItemsItem
 import com.example.cleansound.model.track.SingleTrack
 import com.example.cleansound.repositories.SpotifyRepository
+import com.example.cleansound.utils.EspressoIdlingResource
 import kotlinx.coroutines.launch
 
 class HomeViewModel(private val spotifyRepository: SpotifyRepository) : ViewModel() {
@@ -50,6 +51,7 @@ class HomeViewModel(private val spotifyRepository: SpotifyRepository) : ViewMode
         }
     }
     fun searchTracks(query: String) {
+        EspressoIdlingResource.increment()
         viewModelScope.launch {
             val results = spotifyRepository.searchTracks(query)
             if (results.isSuccess) {
@@ -59,6 +61,7 @@ class HomeViewModel(private val spotifyRepository: SpotifyRepository) : ViewMode
                 println("Error fetching searching tracks: ${exception?.message}")
             }
         }
+        EspressoIdlingResource.decrement()
     }
 
     fun getSingleTrack(trackId : String?) {

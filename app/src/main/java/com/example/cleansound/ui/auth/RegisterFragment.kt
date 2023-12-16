@@ -47,6 +47,7 @@ class RegisterFragment : Fragment() {
             }
         }
 
+        // This still leaves a unit testing when the user has make an account and not setting up the username and photo profile
         binding.signUpBtn.setOnClickListener{
             val email = binding.tiEmailEditSignUp.text.toString()
             val password = binding.tiPassEditSignUp.text.toString()

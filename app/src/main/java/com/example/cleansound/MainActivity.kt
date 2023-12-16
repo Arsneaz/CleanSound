@@ -60,8 +60,9 @@ class MainActivity : AppCompatActivity() {
                         R.id.navigation_notifications,
                         R.id.navigation_dashboard ->  {
                             // This code is also kind not work the way I like
-                            navController.popBackStack(R.id.navigation_home, false)
+                            navController.popBackStack(R.id.navigation_home, true)
                         }
+                        // Give the backstack to the nature of the View Bottom Navigation, does this will solve the problem?
                         else -> navController.navigateUp()
                     }
                 }

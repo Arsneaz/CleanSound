@@ -1,6 +1,5 @@
 package com.example.cleansound.ui.auth
 
-import android.net.Uri
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.cleansound.local.model.User
 import com.example.cleansound.repositories.LocalRepository
@@ -11,9 +10,7 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
-
 import org.junit.Test
-import org.mockito.ArgumentMatchers.any
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.`when`
 
@@ -55,6 +52,7 @@ class ProfileSetupViewModelTest {
         viewModel.insertUserStatus.removeObserver { status ->
             insertStatus = status
         }
+
 
     }
 

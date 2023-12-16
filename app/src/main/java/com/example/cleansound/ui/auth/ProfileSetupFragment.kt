@@ -89,6 +89,9 @@ class ProfileSetupFragment : Fragment() {
                 findNavController().navigate(R.id.action_profileSetupFragment_to_navigation_home)
             }
         }
+
+        // Should I make a init for this every time a user register (make a default username)
+        // and then update the content if the user decided to make userProfile???
         binding.proceedBtn.setOnClickListener{
             val userName = binding.userNameProfile.text.toString()
             var userDesc = binding.userDescProfile.text.toString()

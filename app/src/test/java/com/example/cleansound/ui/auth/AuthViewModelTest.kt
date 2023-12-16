@@ -1,6 +1,7 @@
 package com.example.cleansound.ui.auth
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.cleansound.repositories.AuthRepository
 import com.example.cleansound.utils.MainDispatcherRule
 import com.google.firebase.auth.FirebaseAuth
@@ -11,13 +12,10 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Rule
-
 import org.junit.Test
-import org.junit.rules.TestWatcher
-import org.junit.runner.Description
+import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mockito.mock
-import org.mockito.Mockito.verify
 import org.mockito.Mockito.`when`
 
 @ExperimentalCoroutinesApi

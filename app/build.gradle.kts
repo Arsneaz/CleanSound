@@ -69,17 +69,26 @@ dependencies {
     implementation("com.firebaseui:firebase-ui-auth:7.2.0")
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-auth:22.3.0")
+    implementation("androidx.palette:palette-ktx:1.0.0")
+    implementation("androidx.test.ext:junit-ktx:1.1.5")
+    implementation("androidx.navigation:navigation-testing:2.7.5")
 
     // Unit Testing Dependencies
     testImplementation("junit:junit:4.13.2")
     testImplementation("androidx.arch.core:core-testing:2.2.0")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
     testImplementation("org.mockito:mockito-core:5.8.0")
+    androidTestImplementation("androidx.test:runner:1.5.2")
+    androidTestImplementation("org.mockito:mockito-android:5.8.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.ext:junit-ktx:1.1.5")
     androidTestImplementation("androidx.arch.core:core-testing:2.2.0")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation("com.squareup.okhttp3:mockwebserver:4.11.0")
     androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+
+    implementation("androidx.test.espresso:espresso-idling-resource:3.5.1")
+    debugImplementation("androidx.fragment:fragment-testing:1.6.2")
 
 
     // Wrapper for Spotify API / Api Service

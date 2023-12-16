@@ -1,12 +1,10 @@
 package com.example.cleansound.repositories
 
-import android.os.Build.VERSION_CODES.P
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.cleansound.local.data.AppDatabase
-import com.example.cleansound.model.playlists.FeaturedPlaylists
 import com.example.cleansound.model.playlists.Playlists
 import com.example.cleansound.model.search.ItemsItem
 import com.example.cleansound.model.track.SingleTrack
