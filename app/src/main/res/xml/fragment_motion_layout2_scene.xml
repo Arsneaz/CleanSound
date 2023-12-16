@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="2000"
+        motion:autoTransition="animateToEnd">
+        <KeyFrameSet></KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:layout_height="wrap_content"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:id="@+id/tv_title"
+            motion:layout_constraintVertical_bias="0"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="550dp" />
+        <Constraint
+            android:layout_height="300dp"
+            android:layout_marginTop="68dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_width="300dp"
+            android:id="@+id/iv_logo"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="111dp" />
+        <Constraint
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="104dp"
+            motion:layout_editor_absoluteY="384dp"
+            android:id="@+id/tv_motion"
+            android:visibility="invisible" />
+        <Constraint
+            android:id="@+id/tv_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_editor_absoluteY="431dp"
+            motion:layout_editor_absoluteX="84dp"
+            android:visibility="invisible" />
+        <Constraint
+            android:layout_height="50dp"
+            android:layout_width="50dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="124dp"
+            android:layout_marginStart="130dp"
+            android:id="@+id/menuEnd"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="-50dp" />
+        <Constraint
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/menuEnd"
+            android:layout_marginEnd="130dp"
+            motion:layout_constraintTop_toTopOf="@+id/menuEnd"
+            android:id="@+id/menu1" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/iv_logo"
+            android:layout_marginTop="164dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="55dp" />
+        <Constraint
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="0.0"
+            motion:layout_constraintTop_toBottomOf="@+id/tv_motion"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/tv_title"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="104dp"
+            android:layout_marginEnd="104dp" />
+        <Constraint
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/tv_motion"
+            motion:layout_constraintTop_toBottomOf="@+id/iv_logo"
+            android:layout_marginTop="50dp"
+            android:visibility="visible" />
+        <Constraint
+            android:id="@+id/tv_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_editor_absoluteX="84dp"
+            android:visibility="invisible"
+            motion:layout_constraintTop_toBottomOf="@+id/iv_logo"
+            android:layout_marginTop="50dp" />
+        <Constraint
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="150dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_editor_absoluteY="887dp"
+            android:id="@+id/menuEnd"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="50dp" >
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="1" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/menu1"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/menuEnd"
+            android:layout_marginEnd="150dp"
+            motion:layout_constraintTop_toTopOf="@+id/menuEnd">
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="0" />
+        </Constraint>
+    </ConstraintSet>
+    <ConstraintSet android:id="@+id/Menu1"
+        motion:deriveConstraintsFrom="@+id/end">
+        <Constraint
+            android:id="@+id/iv_logo"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_editor_absoluteX="55dp" />
+        <Constraint
+            android:id="@+id/iv_logo"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="164dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_editor_absoluteX="55dp" />
+        <Constraint
+            android:id="@+id/tv_title"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="0.551"
+            motion:layout_constraintTop_toBottomOf="@+id/tv_motion"
+            motion:layout_constraintHorizontal_bias="0.444"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:visibility="invisible" />
+        <Constraint
+            android:id="@+id/tv_motion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_editor_absoluteY="384dp"
+            motion:layout_editor_absoluteX="110dp"
+            android:visibility="invisible" />
+        <Constraint
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="150dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/menuEnd"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="50dp" >
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="0" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/menu1"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/menuEnd"
+            android:layout_marginEnd="150dp"
+            motion:layout_constraintTop_toTopOf="@+id/menuEnd"
+            android:layout_marginRight="168dp"
+            motion:layout_constraintVertical_bias="0.0">
+            <CustomAttribute
+                motion:attributeName="crossfade"
+                motion:customFloatValue="1" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/tv_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            motion:layout_constraintTop_toBottomOf="@+id/iv_logo"
+            android:layout_marginTop="50dp" />
+    </ConstraintSet>
+    <Transition
+        motion:constraintSetStart="@+id/end"
+        motion:constraintSetEnd="@+id/Menu1">
+        <OnSwipe
+            motion:dragDirection="dragLeft" />
+    </Transition>
+    <ConstraintSet
+        android:id="@+id/Menu2"
+        motion:deriveConstraintsFrom="@+id/Menu1" >
+        <Constraint
+            android:layout_height="wrap_content"
+            motion:layout_editor_absoluteX="84dp"
+            android:layout_width="wrap_content"
+            android:id="@+id/tv_2"
+            motion:layout_constraintTop_toBottomOf="@+id/iv_logo"
+            android:layout_marginTop="700dp" />
+        <Constraint
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="250dp"
+            android:id="@+id/btn_start"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="50dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="32dp" />
+        <Constraint
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="-50dp"
+            android:layout_marginStart="124dp"
+            android:id="@+id/menuEnd"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:crossfade="0" />
+        <Constraint
+            android:id="@+id/iv_logo"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_editor_absoluteX="55dp"
+            android:layout_marginTop="68dp" />
+        <Constraint
+            android:id="@+id/tv_title"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            motion:layout_constraintHorizontal_bias="0.444"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@+id/iv_logo"
+            android:layout_marginTop="50dp" />
+    </ConstraintSet>
+    <Transition
+        motion:constraintSetStart="@+id/Menu1"
+        motion:constraintSetEnd="@+id/Menu2" >
+        <OnSwipe
+            motion:dragDirection="dragLeft" />
+    </Transition>
+</MotionScene>

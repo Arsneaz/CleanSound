@@ -72,8 +72,8 @@
         android:name="com.example.cleansound.ui.splash.Splash"
         android:label="Splash" >
         <action
-            android:id="@+id/action_splash_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_splash_to_motionLayout2"
+            app:destination="@id/motionLayout2" />
     </fragment>
     <fragment
         android:id="@+id/trackDetailFragment"
@@ -113,6 +113,15 @@
         <action
             android:id="@+id/action_featuredTracksFragment_to_trackDetailFragment"
             app:destination="@id/trackDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/motionLayout2"
+        android:name="com.example.cleansound.ui.MotionLayout.MotionLayout"
+        android:label="fragment_motion_layout2"
+        tools:layout="@layout/fragment_motion_layout2" >
+        <action
+            android:id="@+id/action_motionLayout2_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 
 </navigation>
