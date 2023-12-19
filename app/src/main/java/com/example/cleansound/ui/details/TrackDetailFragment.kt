@@ -116,23 +116,9 @@ class TrackDetailFragment : Fragment() {
 
                 btnPlay.setOnClickListener{
                     musicPlayer.playMusic(track.previewUrl)
-                    if (musicPlayer.isMusicPlaying()){
-                        btnPlay.visibility = View.VISIBLE
-                        btnPause.visibility = View.INVISIBLE
-                    } else {
-                        btnPlay.visibility = View.INVISIBLE
-                        btnPause.visibility = View.VISIBLE
-                    }
                 }
                 btnPause.setOnClickListener{
                     musicPlayer.pauseMusic()
-                    if (musicPlayer.isMusicPlaying()){
-                        btnPlay.visibility = View.INVISIBLE
-                        btnPause.visibility = View.VISIBLE
-                    } else {
-                        btnPlay.visibility = View.VISIBLE
-                        btnPause.visibility = View.INVISIBLE
-                    }
                 }
             }
         }
