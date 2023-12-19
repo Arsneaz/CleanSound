@@ -68,7 +68,7 @@ class TrackDetailFragment : Fragment() {
                     imageUrl = track.album?.images?.firstOrNull()?.url ?: ""
                 )
                 binding.trackTitle.text = track.name
-                binding.trackSinger.text = track.artists?.joinToString(", ") {artist -> artist?.name!!}
+                binding.trackSinger.text = track.artists.joinToString(", ") {artist -> artist?.name!!}
 
                 val durationMs: Int? = track.durationMs
                 binding.trackDuration.text = durationMs?.let { String.format("%d:%02d", it / 1000 / 60, it / 1000 % 60) }
@@ -99,6 +99,7 @@ class TrackDetailFragment : Fragment() {
                         override fun onLoadCleared(placeholder: Drawable?) {
                             TODO("Not yet implemented")
                         }
+
                     })
 
                 // Move these inside the observe block

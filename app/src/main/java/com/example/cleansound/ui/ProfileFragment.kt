@@ -1,29 +1,25 @@
 package com.example.cleansound.ui
 
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.cleansound.MainApplication
 import com.example.cleansound.R
-import com.example.cleansound.databinding.FragmentFavoriteBinding
-import com.example.cleansound.databinding.FragmentHomeBinding
-import com.example.cleansound.databinding.SplashBinding
+import com.example.cleansound.databinding.FragmentProfileBinding
 import com.example.cleansound.repositories.AuthRepository
 import com.example.cleansound.ui.auth.AuthViewModel
 import com.example.cleansound.ui.auth.AuthViewModelFactory
 import com.example.cleansound.ui.auth.ProfileSetupViewModel
 import com.example.cleansound.ui.auth.ProfileSetupViewModelFactory
-import com.google.firebase.auth.FirebaseAuth
 
-class FavoriteFragment : Fragment() {
+class ProfileFragment : Fragment() {
 
     private val authViewModel: AuthViewModel by viewModels {
         AuthViewModelFactory(AuthRepository())
@@ -34,14 +30,14 @@ class FavoriteFragment : Fragment() {
         ProfileSetupViewModelFactory(localRepository)
     }
 
-    private var _binding: FragmentFavoriteBinding? = null
+    private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -58,9 +54,13 @@ class FavoriteFragment : Fragment() {
                 .into(binding.ivProfilePicture)
         }
 
-        binding.SignOutBtn.setOnClickListener {
+        binding.btnLogout.setOnClickListener {
             authViewModel.signOut()
-            findNavController().navigate(R.id.action_navigation_favorite_to_loginFragment)
+            val navOptions = NavOptions.Builder()
+                .setPopUpTo(R.id.loginFragment, true) // Replace with your start destination ID
+                .build()
+
+            findNavController().navigate(R.id.loginFragment, null, navOptions)
         }
     }
 

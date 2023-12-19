@@ -11,9 +11,9 @@ import com.example.cleansound.repositories.LocalRepository
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
-class ProfileSetupViewModel(private val localRepository: LocalRepository,private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()) : ViewModel() {
-
-    val userEmail = firebaseAuth.currentUser?.email!!
+class ProfileSetupViewModel(private val localRepository: LocalRepository) : ViewModel() {
+    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+    private val userEmail = firebaseAuth.currentUser?.email!!
 
     private val _imageUri = MutableLiveData<Uri?>()
     val imageUri : LiveData<Uri?> get() = _imageUri

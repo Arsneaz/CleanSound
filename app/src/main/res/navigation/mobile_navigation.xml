@@ -20,24 +20,24 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.cleansound.ui.dashboard.DashboardFragment"
+        android:id="@+id/navigation_search"
+        android:name="com.example.cleansound.ui.search.SearchTracksFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard">
+        tools:layout="@layout/fragment_search_tracks">
         <action
             android:id="@+id/action_navigation_dashboard_to_trackDetailFragment"
             app:destination="@id/trackDetailFragment"
-            app:popUpTo="@id/navigation_dashboard" />
+            app:popUpTo="@id/navigation_search" />
 
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.cleansound.ui.notifications.NotificationsFragment"
+        android:id="@+id/navigation_favorite"
+        android:name="com.example.cleansound.ui.favorite.FavoriteTracksFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" >
+        tools:layout="@layout/fragment_favorite_tracks" >
         <action
-            android:id="@+id/action_navigation_notifications_to_trackDetailFragment"
+            android:id="@+id/action_navigation_search_to_trackDetailFragment"
             app:destination="@id/trackDetailFragment" />
     </fragment>
 
@@ -72,6 +72,9 @@
         android:name="com.example.cleansound.ui.splash.Splash"
         android:label="Splash" >
         <action
+            android:id="@+id/action_splash_to_motionLayout"
+            app:destination="@id/motionLayout" />
+        <action
             android:id="@+id/action_splash_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
@@ -85,11 +88,11 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_favorite"
-        android:name="com.example.cleansound.ui.FavoriteFragment"
+        android:id="@+id/navigation_profile"
+        android:name="com.example.cleansound.ui.ProfileFragment"
         android:label="FavoriteFragment" >
         <action
-            android:id="@+id/action_navigation_favorite_to_loginFragment"
+            android:id="@+id/action_navigation_profile_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
 
@@ -113,6 +116,15 @@
         <action
             android:id="@+id/action_featuredTracksFragment_to_trackDetailFragment"
             app:destination="@id/trackDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/motionLayout"
+        android:name="com.example.cleansound.ui.motion.MotionLayout"
+        android:label="fragment_motion_layout"
+        tools:layout="@layout/fragment_motion_layout" >
+        <action
+            android:id="@+id/action_motionLayout_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 
 </navigation>

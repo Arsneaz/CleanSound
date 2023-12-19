@@ -1,4 +1,4 @@
-package com.example.cleansound.ui.notifications
+package com.example.cleansound.ui.favorite
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,18 +10,18 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cleansound.MainApplication
 import com.example.cleansound.adapter.FavoriteTracksAdapter
-import com.example.cleansound.databinding.FragmentNotificationsBinding
+import com.example.cleansound.databinding.FragmentFavoriteTracksBinding
 import com.example.cleansound.ui.auth.ProfileSetupViewModel
 import com.example.cleansound.ui.auth.ProfileSetupViewModelFactory
 
-class NotificationsFragment : Fragment() {
+class FavoriteTracksFragment : Fragment() {
 
     private val favoriteViewModel: ProfileSetupViewModel by viewModels {
         val localRepository = (requireActivity().application as MainApplication).localRepository
         ProfileSetupViewModelFactory(localRepository)
     }
 
-    private var _binding: FragmentNotificationsBinding? = null
+    private var _binding: FragmentFavoriteTracksBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var adapter : FavoriteTracksAdapter
@@ -31,7 +31,7 @@ class NotificationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentFavoriteTracksBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -40,17 +40,17 @@ class NotificationsFragment : Fragment() {
         setupRecyclerView()
 
         favoriteViewModel.favoriteTracks.observe(viewLifecycleOwner) {favoriteTrack ->
-            (binding.favoriteTrackList.adapter as FavoriteTracksAdapter).submitList(favoriteTrack)
+            (binding.rvFavoriteTracks.adapter as FavoriteTracksAdapter).submitList(favoriteTrack)
         }
     }
 
     private fun setupRecyclerView() {
-        binding.favoriteTrackList.layoutManager = LinearLayoutManager(context)
+        binding.rvFavoriteTracks.layoutManager = LinearLayoutManager(context)
         adapter = FavoriteTracksAdapter { trackId ->
-            val action = NotificationsFragmentDirections.actionNavigationNotificationsToTrackDetailFragment(trackId)
+            val action = FavoriteTracksFragmentDirections.actionNavigationSearchToTrackDetailFragment(trackId)
             findNavController().navigate(action)
         }
-        binding.favoriteTrackList.adapter = adapter
+        binding.rvFavoriteTracks.adapter = adapter
 
     }
 

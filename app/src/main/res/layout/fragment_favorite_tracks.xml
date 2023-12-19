@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:paddingVertical="@dimen/spacing_6"
+tools:context=".ui.home.FeaturedTracksFragment">
+
+<TextView
+    android:id="@+id/tvFavoriteTracks"
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:paddingHorizontal="@dimen/spacing_4"
+    android:text="@string/your_favorite_tracks"
+    android:textAlignment="center"
+    android:textAppearance="@style/Text.Headings.H1"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/rvFavoriteTracks"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/spacing_6"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tvFavoriteTracks"
+    tools:listitem="@layout/item_track" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

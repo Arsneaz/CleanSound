@@ -27,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:scaleType="centerCrop"
+                android:contentDescription="@string/album_image"
                 android:src="@drawable/cleansound" />
 
             <LinearLayout
@@ -38,22 +39,25 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Title"
+                    android:text="@string/track_title"
                     android:textSize="@dimen/text_size_16"
                     />
+
+                <!-- Singer -->
+
                 <TextView
                     android:id="@+id/trackTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:text="Song Name"
+                    android:text="@string/track_name"
                     android:textSize="@dimen/text_size_20"
                     android:textStyle="bold" />
-                <!-- Singer -->
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Artist"
+                    android:text="@string/artists_name"
                     android:textSize="@dimen/text_size_16"
                     />
                 <TextView
@@ -62,14 +66,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:textStyle="bold"
-                    android:text="Singer"
+                    android:text="@string/artists"
                     android:textSize="@dimen/text_size_20" />
 
                 <!-- Duration -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Duration"
+                    android:text="@string/duration"
                     android:textSize="@dimen/text_size_16"
                     />
                 <TextView
@@ -78,14 +82,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:textStyle="bold"
-                    android:text="3:40"
+                    android:text="@string/track_duration"
                     android:textSize="@dimen/text_size_20" />
 
                 <!-- Release Date -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Release Date: "
+                    android:text="@string/release_date"
                     android:textSize="@dimen/text_size_16" />
 
                 <TextView
@@ -94,11 +98,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:textStyle="bold"
-                    android:text="Jan 1, 2023"
+                    android:text="@string/track_release_date"
                     android:textSize="@dimen/text_size_20" />
 
-                <!-- Other details (e.g., additional information) -->
-                <!-- Add additional TextViews or other UI elements as needed -->
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/addIntoFavorite"
                     android:layout_width="match_parent"
@@ -107,7 +109,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/btn_box"
                     android:elevation="@dimen/cardview_default_elevation"
-                    android:text="Insert Into Favorites"
+                    android:text="@string/insert_into_favorites"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="18sp"
@@ -121,7 +123,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/btn_box"
                     android:elevation="@dimen/cardview_default_elevation"
-                    android:text="Listen to Spotify"
+                    android:text="@string/listen_to_spotify"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="18sp"

@@ -9,7 +9,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.launch
 
-class AuthViewModel(private val authRepository: AuthRepository, private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()) : ViewModel() {
+class AuthViewModel(private val authRepository: AuthRepository) : ViewModel() {
+
+    val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
     private val _currentUser = MutableLiveData<FirebaseUser?>()
     val currentUser: LiveData<FirebaseUser?> get() = _currentUser
@@ -41,7 +43,7 @@ class AuthViewModel(private val authRepository: AuthRepository, private val fire
         result.onSuccess { user ->
             _currentUser.value = user
             _isLoggedIn.value = true
-        }.onFailure { error ->
+        }.onFailure {
             _currentUser.value = null
             _isLoggedIn.value = false
         }

@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when(destination.id) {
                 R.id.splash,
+                R.id.motionLayout,
                 R.id.loginFragment,
                 R.id.registerFragment,
                 R.id.profileSetupFragment -> {
@@ -53,14 +54,14 @@ class MainActivity : AppCompatActivity() {
             val callback = object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                     when(navController.currentDestination?.id) {
-                        R.id.navigation_home, R.id.loginFragment -> {
+                        R.id.navigation_home, R.id.loginFragment, R.id.profileSetupFragment -> {
                             showExitConfirmationDialog()
                         }
                         R.id.navigation_favorite,
-                        R.id.navigation_notifications,
-                        R.id.navigation_dashboard ->  {
+                        R.id.navigation_search,
+                        R.id.navigation_profile -> {
                             // This code is also kind not work the way I like
-                            navController.popBackStack(R.id.navigation_home, true)
+                            navController.popBackStack(R.id.navigation_home, false)
                         }
                         // Give the backstack to the nature of the View Bottom Navigation, does this will solve the problem?
                         else -> navController.navigateUp()

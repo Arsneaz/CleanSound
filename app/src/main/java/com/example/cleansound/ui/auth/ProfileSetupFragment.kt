@@ -70,7 +70,7 @@ class ProfileSetupFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentProfileSetupBinding.inflate(inflater)
         return binding.root
     }

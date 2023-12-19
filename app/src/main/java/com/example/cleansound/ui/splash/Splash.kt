@@ -1,5 +1,6 @@
 package com.example.cleansound.ui.splash
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +11,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.cleansound.MainApplication
 import com.example.cleansound.R
 import com.example.cleansound.databinding.SplashBinding
-import com.example.cleansound.ui.home.HomeViewModel
-import com.example.cleansound.ui.home.SpotifyViewModelFactory
 
 class Splash: Fragment() {
 
@@ -32,19 +31,31 @@ class Splash: Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         displayLoadingIndicator(true)
 
+        // Getting the SharedPref Value
+        val sharedPref = activity?.getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+        val isOnboardingComplete = sharedPref?.getBoolean("ONBOARDING_COMPLETE", false) ?: false
+
+        /**
+         * On the first time apps running, it will try to fetch the data from the ViewModel (init function)
+         * and store that into the remoteMediator, so the onBoarding for the first app will be
+         * on the state isComplete be true
+         * */
         spotifyViewModel.isInitialLoadComplete.observe(viewLifecycleOwner) {isComplete ->
             if (isComplete) {
                 displayLoadingIndicator(false)
                 findNavController().navigate(R.id.action_splash_to_loginFragment)
             } else {
                 displayLoadingIndicator(false)
-                findNavController().navigate(R.id.action_splash_to_loginFragment)
+                if (!isOnboardingComplete) {
+                    findNavController().navigate(R.id.action_splash_to_motionLayout)
+                } else {
+                    findNavController().navigate(R.id.action_splash_to_loginFragment)
+                }
             }
         }
 

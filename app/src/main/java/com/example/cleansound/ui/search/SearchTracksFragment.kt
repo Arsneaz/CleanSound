@@ -1,4 +1,4 @@
-package com.example.cleansound.ui.dashboard
+package com.example.cleansound.ui.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,18 +12,18 @@ import com.example.cleansound.MainApplication
 import com.example.cleansound.R
 import com.example.cleansound.adapter.SearchTracksAdapter
 import com.example.cleansound.adapter.VerticalSpaceItemDecoration
-import com.example.cleansound.databinding.FragmentDashboardBinding
+import com.example.cleansound.databinding.FragmentSearchTracksBinding
 import com.example.cleansound.ui.home.HomeViewModel
 import com.example.cleansound.ui.home.SpotifyViewModelFactory
 
-class DashboardFragment : Fragment() {
+class SearchTracksFragment : Fragment() {
 
     private val spotifyViewModel : HomeViewModel by viewModels {
         val spotifyRepository = (requireActivity().application as MainApplication).spotifyRepository
         SpotifyViewModelFactory(spotifyRepository)
     }
 
-    private var _binding: FragmentDashboardBinding? = null
+    private var _binding: FragmentSearchTracksBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var adapter : SearchTracksAdapter
@@ -33,7 +33,7 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        _binding = FragmentSearchTracksBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -44,24 +44,24 @@ class DashboardFragment : Fragment() {
         setupRecyclerView()
 
         spotifyViewModel.searchResult.observe(viewLifecycleOwner) {tracks ->
-            (binding.recyclerView.adapter as SearchTracksAdapter).submitList(tracks)
+            (binding.rvSearchResult.adapter as SearchTracksAdapter).submitList(tracks)
         }
     }
 
     private fun setupRecyclerView() {
-        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        binding.rvSearchResult.layoutManager = LinearLayoutManager(context)
         adapter = SearchTracksAdapter { trackId ->
-            val action = DashboardFragmentDirections.actionNavigationDashboardToTrackDetailFragment(trackId)
+            val action = SearchTracksFragmentDirections.actionNavigationDashboardToTrackDetailFragment(trackId)
             findNavController().navigate(action)
         }
         val vertical = resources.getDimensionPixelSize(R.dimen.spacing_4)
-        binding.recyclerView.addItemDecoration(VerticalSpaceItemDecoration(vertical))
-        binding.recyclerView.adapter = adapter
+        binding.rvSearchResult.addItemDecoration(VerticalSpaceItemDecoration(vertical))
+        binding.rvSearchResult.adapter = adapter
 
     }
 
     private fun setupSearchInput() {
-        binding.searchAction.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+        binding.svTrackSearch.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextChange(newText: String?): Boolean {
                 return false
             }

@@ -69,11 +69,10 @@ dependencies {
     implementation("com.firebaseui:firebase-ui-auth:7.2.0")
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-auth:22.3.0")
-    implementation("androidx.palette:palette-ktx:1.0.0")
-    implementation("androidx.test.ext:junit-ktx:1.1.5")
-    implementation("androidx.navigation:navigation-testing:2.7.5")
 
     // Unit Testing Dependencies
+    implementation("androidx.test.ext:junit-ktx:1.1.5")
+    implementation("androidx.navigation:navigation-testing:2.7.5")
     testImplementation("junit:junit:4.13.2")
     testImplementation("androidx.arch.core:core-testing:2.2.0")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
@@ -86,10 +85,8 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation("com.squareup.okhttp3:mockwebserver:4.11.0")
     androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
-
     implementation("androidx.test.espresso:espresso-idling-resource:3.5.1")
     debugImplementation("androidx.fragment:fragment-testing:1.6.2")
-
 
     // Wrapper for Spotify API / Api Service
     implementation("com.adamratzman:spotify-api-kotlin-core:4.0.3")
@@ -111,7 +108,8 @@ dependencies {
     kapt("com.github.bumptech.glide:compiler:4.12.0")
 
     //ColorAPI
-    implementation("androidx.palette:palette:1.0.0")
+    implementation("androidx.palette:palette-ktx:1.0.0")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
     // Paging3
     implementation("androidx.paging:paging-runtime-ktx:3.2.1")

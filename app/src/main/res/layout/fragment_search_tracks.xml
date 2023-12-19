@@ -4,7 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.dashboard.DashboardFragment">
+    tools:context=".ui.search.SearchTracksFragment">
+
+    <TextView
+        android:id="@+id/tvSearchTrack"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/spacing_6"
+        android:layout_marginTop="@dimen/spacing_6"
+        android:text="@string/search_for_any_tracks"
+        android:textAppearance="@style/Text.Headings.H1"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
@@ -12,14 +27,12 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="8dp"
         app:cardElevation="12dp"
-        app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/tvSearchTrack">
 
         <androidx.appcompat.widget.SearchView
-            android:id="@+id/search_action"
+            android:id="@+id/svTrackSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:iconifiedByDefault="false"
@@ -29,15 +42,15 @@
     </com.google.android.material.card.MaterialCardView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="60dp"
-        android:paddingHorizontal="@dimen/spacing_6"
+        android:id="@+id/rvSearchResult"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:paddingHorizontal="@dimen/spacing_6"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/materialCardView"
         tools:listitem="@layout/item_track" />
 
 

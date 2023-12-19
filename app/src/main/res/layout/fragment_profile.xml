@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="10dp"
-        android:text="User profile"
+        android:text="@string/user_profile"
         android:textAlignment="center"
         android:textSize="@dimen/text_size_20"
         android:textStyle="bold"
@@ -46,6 +46,7 @@
                 android:id="@+id/ivProfilePicture"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/image_profile_picture"
                 android:src="@drawable/logo"
 
                 tools:src="@tools:sample/avatars" />
@@ -56,7 +57,7 @@
         android:id="@+id/ll_information"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
         android:paddingHorizontal="@dimen/spacing_12"
         android:paddingVertical="@dimen/spacing_8"
@@ -65,7 +66,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Email"
+            android:text="@string/email"
             android:textColor="@color/light_slate_gray"
             android:textSize="@dimen/text_size_16" />
 
@@ -74,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacing_12"
-            android:text="Sebastian@gmail.com"
+            android:text="@string/email_user"
             android:textSize="@dimen/text_size_20"
             android:textStyle="bold" />
 
@@ -82,7 +83,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Username"
+            android:text="@string/username"
             android:textColor="@color/light_slate_gray"
             android:textSize="@dimen/text_size_16" />
 
@@ -91,7 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacing_12"
-            android:text="Sebastian"
+            android:text="@string/profile_username"
             android:textSize="@dimen/text_size_20"
             android:textStyle="bold" />
 
@@ -99,7 +100,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Deskripsi"
+            android:text="@string/deskripsi"
             android:textColor="@color/light_slate_gray"
             android:textSize="@dimen/text_size_16" />
 
@@ -108,7 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacing_12"
-            android:text="Emu Ottori"
+            android:text="@string/user_desc"
             android:textSize="@dimen/text_size_20"
             android:textStyle="bold" />
     </LinearLayout>
@@ -116,13 +117,13 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/SignOutBtn"
+        android:id="@+id/btnLogout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/btn_box"
-        android:text="SignOut"
+        android:text="@string/logout"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"

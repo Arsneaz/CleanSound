@@ -59,7 +59,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tiEmailEditSignUp"
+            android:id="@+id/tiRegisterEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/ic_email"
@@ -82,7 +82,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tiPassEditSignUp"
+            android:id="@+id/tiRegisterPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/emailEditSignUp"
@@ -91,7 +91,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/signUpBtn"
+        android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="575dp"
@@ -103,10 +103,10 @@
         android:textAllCaps="false"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/tiPassEditSignUp"
+        app:layout_constraintTop_toBottomOf="@+id/tiRegisterPassword"
         tools:ignore="NotSibling" />
     <TextView
-        android:id="@+id/signInText"
+        android:id="@+id/tvNavigateLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -116,5 +116,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signUpBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
 </androidx.constraintlayout.widget.ConstraintLayout>

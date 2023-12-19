@@ -6,16 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.cleansound.R
 import com.example.cleansound.databinding.FragmentLoginBinding
 import com.example.cleansound.repositories.AuthRepository
-import com.google.firebase.Firebase
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
 
 class LoginFragment : Fragment() {
 
@@ -30,12 +25,11 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentLoginBinding.inflate(inflater)
-        val root = binding.root
+        return binding.root
 
-        return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,9 +44,9 @@ class LoginFragment : Fragment() {
         }
 
         // Redirecting to the register page
-        binding.btnSignInBtn.setOnClickListener {
-            val email = binding.tiEmailEditSignUp.text.toString()
-            val password = binding.tiPassEditSignUp.text.toString()
+        binding.btnLogin.setOnClickListener {
+            val email = binding.tiLoginEmail.text.toString()
+            val password = binding.tiLoginPassword.text.toString()
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 viewModel.login(email, password)
@@ -60,7 +54,7 @@ class LoginFragment : Fragment() {
 
         }
 
-        binding.tvSignUpText.setOnClickListener {
+        binding.tvNavigateRegister.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
     }

@@ -10,7 +10,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface SpotifyService {
-    @GET("browse/featured-playlists?country=ID&limit=10")
+    @GET("browse/featured-playlists?country=ID&limit=5")
     suspend fun getFeaturedPlaylist() : Response<FeaturedPlaylists>
 
     @GET("playlists/{playlist_id}/tracks")

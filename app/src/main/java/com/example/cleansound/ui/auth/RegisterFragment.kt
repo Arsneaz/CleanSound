@@ -6,15 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.cleansound.R
 import com.example.cleansound.databinding.FragmentRegisterBinding
 import com.example.cleansound.repositories.AuthRepository
-import com.google.firebase.auth.FirebaseAuth
 
 class RegisterFragment : Fragment() {
     private val viewModel: AuthViewModel by viewModels {
@@ -28,7 +24,7 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         super.onCreate(savedInstanceState)
 
         _binding = FragmentRegisterBinding.inflate(inflater)
@@ -48,16 +44,16 @@ class RegisterFragment : Fragment() {
         }
 
         // This still leaves a unit testing when the user has make an account and not setting up the username and photo profile
-        binding.signUpBtn.setOnClickListener{
-            val email = binding.tiEmailEditSignUp.text.toString()
-            val password = binding.tiPassEditSignUp.text.toString()
+        binding.btnRegister.setOnClickListener{
+            val email = binding.tiRegisterEmail.text.toString()
+            val password = binding.tiRegisterPassword.text.toString()
 
-            if (!email.isEmpty() && !password.isEmpty()) {
+            if (email.isNotEmpty() && password.isNotEmpty()) {
                 viewModel.register(email, password)
             }
         }
 
-        binding.signInText.setOnClickListener{
+        binding.tvNavigateLogin.setOnClickListener{
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
     }

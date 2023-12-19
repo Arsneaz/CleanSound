@@ -40,14 +40,6 @@ class TracksRemoteMediator(
     override suspend fun load(loadType: LoadType, state: PagingState<Int, Track>): MediatorResult {
         var successfulDataFetch = false
 
-        /**
-         * This loadKey is good for paginating also from the spotify API, but later I guess
-         */
-        val loadKey = when (loadType) {
-            LoadType.REFRESH -> null
-            LoadType.PREPEND -> return MediatorResult.Success(endOfPaginationReached = true)
-            LoadType.APPEND -> return MediatorResult.Success(endOfPaginationReached = true)
-        }
         try {
             // Fetch data from network
             val response = spotifyService.getFeaturedPlaylist()

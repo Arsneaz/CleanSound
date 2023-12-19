@@ -8,15 +8,30 @@
     android:paddingVertical="@dimen/spacing_6"
     tools:context=".ui.home.FeaturedTracksFragment">
 
+    <TextView
+        android:id="@+id/tvFeaturedTracks"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingHorizontal="@dimen/spacing_4"
+        android:text="@string/featured_tracks"
+        android:textAppearance="@style/Text.Headings.H1"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTracksPlaylist"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingHorizontal="@dimen/spacing_6"
-        android:layout_marginBottom="60dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:paddingHorizontal="@dimen/spacing_6"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvFeaturedTracks"
         tools:listitem="@layout/item_track" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
