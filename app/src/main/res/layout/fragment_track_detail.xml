@@ -20,7 +20,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
-
             <!-- Image -->
             <ImageView
                 android:id="@+id/trackImage"
@@ -85,21 +84,60 @@
                     android:text="@string/track_duration"
                     android:textSize="@dimen/text_size_20" />
 
-                <!-- Release Date -->
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/release_date"
-                    android:textSize="@dimen/text_size_16" />
+                    android:orientation="horizontal"
+                    >
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
 
-                <TextView
-                    android:id="@+id/trackReleaseDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:textStyle="bold"
-                    android:text="@string/track_release_date"
-                    android:textSize="@dimen/text_size_20" />
+                        <!-- Release Date -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/release_date"
+                            android:textSize="@dimen/text_size_16" />
+
+                        <TextView
+                            android:id="@+id/trackReleaseDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:textStyle="bold"
+                            android:text="@string/track_release_date"
+                            android:textSize="@dimen/text_size_20" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="end|center"
+                        android:paddingRight="@dimen/spacing_8"
+                        >
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnPlay"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:background="@drawable/ic_play"
+                            android:backgroundTint="@color/blue"
+                            android:visibility="visible"
+                            android:contentDescription="Button Play"
+                            android:layout_centerInParent="true"
+                            />
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnPause"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:background="@drawable/ic_pause"
+                            android:backgroundTint="@color/blue"
+                            android:layout_centerInParent="true"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/addIntoFavorite"
@@ -129,6 +167,7 @@
                     android:textSize="18sp"
                     app:iconTint="@color/transparent" />
             </LinearLayout>
+
 
         </LinearLayout>
 

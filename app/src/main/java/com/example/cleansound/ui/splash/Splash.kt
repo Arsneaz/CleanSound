@@ -48,13 +48,13 @@ class Splash: Fragment() {
         spotifyViewModel.isInitialLoadComplete.observe(viewLifecycleOwner) {isComplete ->
             if (isComplete) {
                 displayLoadingIndicator(false)
-                findNavController().navigate(R.id.action_splash_to_loginFragment)
+                findNavController().navigate(R.id.action_splash_to_motionLayout)
             } else {
                 displayLoadingIndicator(false)
                 if (!isOnboardingComplete) {
                     findNavController().navigate(R.id.action_splash_to_motionLayout)
                 } else {
-                    findNavController().navigate(R.id.action_splash_to_loginFragment)
+                    findNavController().navigate(R.id.action_splash_to_motionLayout)
                 }
             }
         }

@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.example.cleansound.MainApplication
+import com.example.cleansound.MusicPlayerManager.MusicPlayer
 import com.example.cleansound.databinding.FragmentTrackDetailBinding
 import com.example.cleansound.local.model.Track
 import com.example.cleansound.ui.auth.ProfileSetupViewModel
@@ -44,6 +45,8 @@ class TrackDetailFragment : Fragment() {
     private val args: TrackDetailFragmentArgs by navArgs()
     private lateinit var trackEntities: Track
 
+    private lateinit var musicPlayer : MusicPlayer
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -58,6 +61,7 @@ class TrackDetailFragment : Fragment() {
 
         val trackId = args.trackId
         spotifyViewModel.getSingleTrack(trackId)
+        musicPlayer = MusicPlayer(requireContext())
 
         spotifyViewModel.singleTrack.observe (viewLifecycleOwner){track ->
             if (track != null) {
@@ -107,6 +111,29 @@ class TrackDetailFragment : Fragment() {
                 binding.addIntoFavorite.setOnClickListener {
                     favoriteViewModel.toggleFavoriteStatus(trackEntities)
                 }
+                val btnPlay = binding.btnPlay
+                val btnPause = binding.btnPause
+
+                btnPlay.setOnClickListener{
+                    musicPlayer.playMusic(track.previewUrl)
+                    if (musicPlayer.isMusicPlaying()){
+                        btnPlay.visibility = View.VISIBLE
+                        btnPause.visibility = View.INVISIBLE
+                    } else {
+                        btnPlay.visibility = View.INVISIBLE
+                        btnPause.visibility = View.VISIBLE
+                    }
+                }
+                btnPause.setOnClickListener{
+                    musicPlayer.pauseMusic()
+                    if (musicPlayer.isMusicPlaying()){
+                        btnPlay.visibility = View.INVISIBLE
+                        btnPause.visibility = View.VISIBLE
+                    } else {
+                        btnPlay.visibility = View.VISIBLE
+                        btnPause.visibility = View.INVISIBLE
+                    }
+                }
             }
         }
 
@@ -151,6 +178,7 @@ class TrackDetailFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        musicPlayer.release()
         _binding = null
     }
 
