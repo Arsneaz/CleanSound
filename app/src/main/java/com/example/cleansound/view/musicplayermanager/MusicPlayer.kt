@@ -1,4 +1,4 @@
-package com.example.cleansound.MusicPlayerManager
+package com.example.cleansound.view.musicplayermanager
 
 import android.content.Context
 import android.media.AudioAttributes

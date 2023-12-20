@@ -20,7 +20,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.example.cleansound.MainApplication
-import com.example.cleansound.MusicPlayerManager.MusicPlayer
+import com.example.cleansound.view.musicplayermanager.MusicPlayer
 import com.example.cleansound.databinding.FragmentTrackDetailBinding
 import com.example.cleansound.model.local.model.Track
 import com.example.cleansound.viewmodel.ProfileSetupViewModel
