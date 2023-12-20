@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/fragment_motion_layout_scene"
-    tools:context=".ui.motion.MotionLayout">
+    tools:context=".view.motion.MotionLayout">
 
     <ImageView
         android:id="@+id/iv_logo"

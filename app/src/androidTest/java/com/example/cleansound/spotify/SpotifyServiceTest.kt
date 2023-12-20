@@ -2,7 +2,7 @@ package com.example.cleansound.spotify
 
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.platform.app.InstrumentationRegistry
-import com.example.cleansound.ui.home.HomeFragment
+import com.example.cleansound.view.home.HomeFragment
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertFalse
 import junit.framework.TestCase.assertNotNull

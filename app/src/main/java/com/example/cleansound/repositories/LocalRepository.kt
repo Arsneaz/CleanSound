@@ -1,10 +1,10 @@
 package com.example.cleansound.repositories
 
 import androidx.lifecycle.LiveData
-import com.example.cleansound.local.data.AppDatabase
-import com.example.cleansound.local.model.Track
-import com.example.cleansound.local.model.User
-import com.example.cleansound.local.model.UserFavoriteTrackReference
+import com.example.cleansound.model.local.data.AppDatabase
+import com.example.cleansound.model.local.model.Track
+import com.example.cleansound.model.local.model.User
+import com.example.cleansound.model.local.model.UserFavoriteTrackReference
 
 class LocalRepository(private val appDatabase: AppDatabase) {
     suspend fun insertUser(user: User){

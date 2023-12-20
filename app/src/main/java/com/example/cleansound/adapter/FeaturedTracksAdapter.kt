@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.cleansound.databinding.ItemTrackBinding
-import com.example.cleansound.local.model.Track
+import com.example.cleansound.model.local.model.Track
 
 class FeaturedTracksAdapter(private val onTrackClicked: (String) -> Unit) : PagingDataAdapter<Track, FeaturedTracksAdapter.TrackViewHolder>(DiffCallback) {
 
@@ -16,7 +16,7 @@ class FeaturedTracksAdapter(private val onTrackClicked: (String) -> Unit) : Pagi
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: Track,  newItem: Track): Boolean {
+        override fun areContentsTheSame(oldItem: Track, newItem: Track): Boolean {
             return oldItem.trackId == newItem.trackId
         }
 

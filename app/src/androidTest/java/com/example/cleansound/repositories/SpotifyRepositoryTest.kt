@@ -1,6 +1,6 @@
 package com.example.cleansound.repositories
 
-import com.example.cleansound.local.data.AppDatabase
+import com.example.cleansound.model.local.data.AppDatabase
 import com.example.cleansound.spotify.SpotifyService
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After

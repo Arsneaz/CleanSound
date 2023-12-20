@@ -4,18 +4,19 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.example.cleansound.local.data.AppDatabase
-import com.example.cleansound.model.playlists.Playlists
-import com.example.cleansound.model.search.ItemsItem
-import com.example.cleansound.model.track.SingleTrack
-import com.example.cleansound.model.tracks.PlaylistTracks
+import com.example.cleansound.model.local.data.AppDatabase
+import com.example.cleansound.model.local.model.Track
+import com.example.cleansound.model.response.playlists.Playlists
+import com.example.cleansound.model.response.search.ItemsItem
+import com.example.cleansound.model.response.track.SingleTrack
+import com.example.cleansound.model.response.tracks.PlaylistTracks
 import com.example.cleansound.remotemediator.TracksRemoteMediator
 import com.example.cleansound.spotify.SpotifyService
 import kotlinx.coroutines.flow.Flow
 
 class SpotifyRepository(private val spotifyService: SpotifyService, private val appDatabase: AppDatabase) {
 
-    suspend fun getFeaturedPlaylists(): Result<Playlists?> {
+    suspend fun getFeaturedPlaylists(): Result<com.example.cleansound.model.response.playlists.Playlists?> {
         return try {
             val response = spotifyService.getFeaturedPlaylist()
             if (response.isSuccessful) {
@@ -28,7 +29,7 @@ class SpotifyRepository(private val spotifyService: SpotifyService, private val 
         }
     }
 
-    suspend fun searchTracks(query: String) : Result<List<ItemsItem?>>{
+    suspend fun searchTracks(query: String) : Result<List<com.example.cleansound.model.response.search.ItemsItem?>>{
         return try{
             val response = spotifyService.searchTracks(query)
             if (response.isSuccessful) {
@@ -41,7 +42,7 @@ class SpotifyRepository(private val spotifyService: SpotifyService, private val 
         }
     }
 
-    suspend fun getTrack(trackId: String?) : Result<SingleTrack> {
+    suspend fun getTrack(trackId: String?) : Result<com.example.cleansound.model.response.track.SingleTrack> {
         return try {
             val response = spotifyService.getTrack(trackId)
             if (response.isSuccessful) {
@@ -54,7 +55,7 @@ class SpotifyRepository(private val spotifyService: SpotifyService, private val 
         }
     }
 
-    suspend fun getFeaturedTracks(playlistId: String?) : Result<PlaylistTracks?> {
+    suspend fun getFeaturedTracks(playlistId: String?) : Result<com.example.cleansound.model.response.tracks.PlaylistTracks?> {
         return try {
             val response = spotifyService.getPlaylistTracks(playlistId)
             if (response.isSuccessful) {
@@ -68,7 +69,7 @@ class SpotifyRepository(private val spotifyService: SpotifyService, private val 
     }
 
     @OptIn(ExperimentalPagingApi::class)
-    fun getTracksForPlaylist(): Flow<PagingData<com.example.cleansound.local.model.Track>> {
+    fun getTracksForPlaylist(): Flow<PagingData<Track>> {
         println("It can be fetched")
         return Pager(
             config = PagingConfig(

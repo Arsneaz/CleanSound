@@ -8,15 +8,15 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.cleansound.databinding.ItemTrackBinding
-import com.example.cleansound.model.tracks.Track
+import com.example.cleansound.model.response.tracks.Track
 
-class FeaturedTracksDetailAdapter (private val onPlaylistClicked: (String) -> Unit) : ListAdapter<Track, FeaturedTracksDetailAdapter.FeaturedTracksDetailViewHolder>(DiffCallback) {
-    companion object DiffCallback : DiffUtil.ItemCallback<Track>() {
-        override fun areItemsTheSame(oldItem: Track, newItem: Track): Boolean {
+class FeaturedTracksDetailAdapter (private val onPlaylistClicked: (String) -> Unit) : ListAdapter<com.example.cleansound.model.response.tracks.Track, FeaturedTracksDetailAdapter.FeaturedTracksDetailViewHolder>(DiffCallback) {
+    companion object DiffCallback : DiffUtil.ItemCallback<com.example.cleansound.model.response.tracks.Track>() {
+        override fun areItemsTheSame(oldItem: com.example.cleansound.model.response.tracks.Track, newItem: com.example.cleansound.model.response.tracks.Track): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Track, newItem: Track): Boolean {
+        override fun areContentsTheSame(oldItem: com.example.cleansound.model.response.tracks.Track, newItem: com.example.cleansound.model.response.tracks.Track): Boolean {
             return oldItem == newItem
         }
 
@@ -24,7 +24,7 @@ class FeaturedTracksDetailAdapter (private val onPlaylistClicked: (String) -> Un
 
     class FeaturedTracksDetailViewHolder(private val binding: ItemTrackBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(track: Track) {
+        fun bind(track: com.example.cleansound.model.response.tracks.Track) {
             binding.tvTrackTitle.text = track.name
             binding.tvTrackArtist.text = track.artists?.joinToString { it?.name.orEmpty() }
             track.album?.images?.firstOrNull()?.url.let { imgUrl ->

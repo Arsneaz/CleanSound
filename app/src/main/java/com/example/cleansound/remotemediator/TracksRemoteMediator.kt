@@ -8,9 +8,9 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
-import com.example.cleansound.local.data.AppDatabase
-import com.example.cleansound.local.model.Track
-import com.example.cleansound.local.model.UpdateInfo
+import com.example.cleansound.model.local.data.AppDatabase
+import com.example.cleansound.model.local.model.Track
+import com.example.cleansound.model.local.model.UpdateInfo
 import com.example.cleansound.spotify.SpotifyService
 import java.io.IOException
 import java.util.concurrent.TimeUnit
@@ -55,7 +55,6 @@ class TracksRemoteMediator(
                     val trackResponse = spotifyService.getPlaylistTracks(playlist?.id!!)
                     val tracks = trackResponse.body()?.items?.mapNotNull { it?.track } ?: emptyList()
 
-                    //
                     val trackEntities = tracks.map { track ->
                         Track(
                             trackId = track.id!!,

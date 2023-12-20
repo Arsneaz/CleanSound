@@ -1,7 +1,7 @@
 package com.example.cleansound
 
 import android.app.Application
-import com.example.cleansound.local.data.AppDatabase
+import com.example.cleansound.model.local.data.AppDatabase
 import com.example.cleansound.repositories.LocalRepository
 import com.example.cleansound.repositories.SpotifyRepository
 import com.example.cleansound.spotify.SpotifyAuthenticator

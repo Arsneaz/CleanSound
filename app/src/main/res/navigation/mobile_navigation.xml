@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.cleansound.ui.home.HomeFragment"
+        android:name="com.example.cleansound.view.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.example.cleansound.ui.search.SearchTracksFragment"
+        android:name="com.example.cleansound.view.search.SearchTracksFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_search_tracks">
         <action
@@ -33,7 +33,7 @@
 
     <fragment
         android:id="@+id/navigation_favorite"
-        android:name="com.example.cleansound.ui.favorite.FavoriteTracksFragment"
+        android:name="com.example.cleansound.view.favorite.FavoriteTracksFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_favorite_tracks" >
         <action
@@ -43,7 +43,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.cleansound.ui.auth.LoginFragment"
+        android:name="com.example.cleansound.view.auth.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login">
         <action
@@ -57,7 +57,7 @@
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.cleansound.ui.auth.RegisterFragment"
+        android:name="com.example.cleansound.view.auth.RegisterFragment"
         android:label="RegisterFragment"
         tools:layout="@layout/fragment_register">
         <action
@@ -69,7 +69,7 @@
     </fragment>
     <fragment
         android:id="@+id/splash"
-        android:name="com.example.cleansound.ui.splash.Splash"
+        android:name="com.example.cleansound.view.splash.Splash"
         android:label="Splash" >
         <action
             android:id="@+id/action_splash_to_motionLayout"
@@ -80,7 +80,7 @@
     </fragment>
     <fragment
         android:id="@+id/trackDetailFragment"
-        android:name="com.example.cleansound.ui.details.TrackDetailFragment"
+        android:name="com.example.cleansound.view.details.TrackDetailFragment"
         android:label="TrackDetailFragment">
         <argument
             android:name="trackId"
@@ -89,7 +89,7 @@
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.cleansound.ui.ProfileFragment"
+        android:name="com.example.cleansound.view.profile.ProfileFragment"
         android:label="FavoriteFragment" >
         <action
             android:id="@+id/action_navigation_profile_to_loginFragment"
@@ -98,7 +98,7 @@
 
     <fragment
         android:id="@+id/profileSetupFragment"
-        android:name="com.example.cleansound.ui.auth.ProfileSetupFragment"
+        android:name="com.example.cleansound.view.auth.ProfileSetupFragment"
         android:label="ProfileSetupFragment" >
         <action
             android:id="@+id/action_profileSetupFragment_to_navigation_home"
@@ -106,7 +106,7 @@
     </fragment>
     <fragment
         android:id="@+id/featuredTracksFragment"
-        android:name="com.example.cleansound.ui.home.FeaturedTracksFragment"
+        android:name="com.example.cleansound.view.home.FeaturedTracksFragment"
         android:label="FeaturedTracksFragment"
         tools:layout="@layout/fragment_featured_tracks"
         >
@@ -119,7 +119,7 @@
     </fragment>
     <fragment
         android:id="@+id/motionLayout"
-        android:name="com.example.cleansound.ui.motion.MotionLayout"
+        android:name="com.example.cleansound.view.motion.MotionLayout"
         android:label="fragment_motion_layout"
         tools:layout="@layout/fragment_motion_layout" >
         <action

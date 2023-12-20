@@ -45,7 +45,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.motionLayout,
                 R.id.loginFragment,
                 R.id.registerFragment,
-                R.id.profileSetupFragment -> {
+                R.id.profileSetupFragment,
+                R.id.trackDetailFragment,
+                R.id.featuredTracksFragment,
+                R.id.trackDetailFragment -> {
                     navView.visibility = View.GONE
                 }
                 else -> navView.visibility = View.VISIBLE

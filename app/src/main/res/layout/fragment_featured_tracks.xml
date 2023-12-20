@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingVertical="@dimen/spacing_6"
-    tools:context=".ui.home.FeaturedTracksFragment">
+    tools:context=".view.home.FeaturedTracksFragment">
 
     <TextView
         android:id="@+id/tvFeaturedTracks"

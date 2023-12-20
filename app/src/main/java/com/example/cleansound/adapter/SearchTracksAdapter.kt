@@ -7,22 +7,22 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.cleansound.databinding.ItemTrackBinding
-import com.example.cleansound.model.search.ItemsItem
+import com.example.cleansound.model.response.search.ItemsItem
 
-class SearchTracksAdapter(private val onTrackClicked: (String) -> Unit) : ListAdapter<ItemsItem, SearchTracksAdapter.SearchTracksViewHolder>(DiffCallback) {
-    companion object DiffCallback : DiffUtil.ItemCallback<ItemsItem>() {
-        override fun areItemsTheSame(oldItem: ItemsItem, newItem: ItemsItem): Boolean {
+class SearchTracksAdapter(private val onTrackClicked: (String) -> Unit) : ListAdapter<com.example.cleansound.model.response.search.ItemsItem, SearchTracksAdapter.SearchTracksViewHolder>(DiffCallback) {
+    companion object DiffCallback : DiffUtil.ItemCallback<com.example.cleansound.model.response.search.ItemsItem>() {
+        override fun areItemsTheSame(oldItem: com.example.cleansound.model.response.search.ItemsItem, newItem: com.example.cleansound.model.response.search.ItemsItem): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: ItemsItem, newItem: ItemsItem): Boolean {
+        override fun areContentsTheSame(oldItem: com.example.cleansound.model.response.search.ItemsItem, newItem: com.example.cleansound.model.response.search.ItemsItem): Boolean {
             return oldItem == newItem
         }
 
     }
 
     class SearchTracksViewHolder(private val binding: ItemTrackBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(itemsItem: ItemsItem) {
+        fun bind(itemsItem: com.example.cleansound.model.response.search.ItemsItem) {
             binding.tvTrackTitle.text = itemsItem.name
             binding.tvTrackArtist.text = itemsItem.artists?.joinToString { it?.name.orEmpty() }
             itemsItem.album?.images?.firstOrNull()?.url.let {imgUrl ->
